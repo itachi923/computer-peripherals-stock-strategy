@@ -3,69 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>電腦及週邊設備類股 · 學術量化投資策略網</title>
-  <meta name="description" content="基於 Piotroski F-Score、Fama-French 五因子模型、Novy-Marx 毛利溢價及 Jegadeesh-Titman 動能之電腦及週邊設備類股量化選股與投資策略實證指南">
+  <title>電腦及週邊設備類股 · 白話實戰投資指南與互動選股庫</title>
+  <meta name="description" content="專為一般投資人設計的電腦及週邊設備類股實戰指南！提供三大白話投資方法、20+精選台股硬體供應鏈地圖、風格測驗、股票健檢器與國際頂尖文獻科學背書。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      /* 淺藍色風格色盤 */
-      --bg-primary: #edf5fc;
-      --bg-secondary: #f4f9fd;
-      --bg-gradient: linear-gradient(135deg, #e4f1fb 0%, #d8ecf8 50%, #ebf5fd 100%);
-      --card-bg: rgba(255, 255, 255, 0.88);
-      --card-border: rgba(180, 215, 245, 0.7);
+      /* 淺藍與海洋質感主題 */
+      --bg-main: #f0f6fc;
+      --bg-gradient: linear-gradient(135deg, #eaf3fb 0%, #d8ecf8 50%, #eef6fd 100%);
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --card-border: #cfe5f8;
       --card-hover-border: #3b82f6;
       
-      /* 文字與重點色 */
-      --text-main: #0f243d;
-      --text-muted: #4b6482;
-      --text-light: #6b86a3;
+      --text-title: #0a2540;
+      --text-body: #2d4156;
+      --text-muted: #5e768d;
       
-      --blue-primary: #1d63ed;
-      --blue-deep: #0b2545;
-      --blue-navy: #133e68;
-      --blue-soft: #e0effe;
-      --blue-sky: #0284c7;
-      --blue-accent: #2563eb;
-      --accent-green: #059669;
+      --blue-primary: #1e60d5;
+      --blue-hover: #154cb0;
+      --blue-navy: #0f2c4d;
+      --blue-soft: #e1effe;
+      --blue-cyan: #0284c7;
+      
+      --accent-green: #0d9488;
+      --accent-green-bg: #e6fffa;
       --accent-amber: #d97706;
-      --accent-red: #dc2626;
+      --accent-amber-bg: #fef3c7;
+      --accent-purple: #7c3aed;
+      --accent-purple-bg: #ede9fe;
+      --accent-red: #e11d48;
       
-      /* 字型定義 */
-      --font-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-main: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "IBM Plex Mono", Consolas, monospace;
-      --font-serif: "Playfair Display", Georgia, serif;
       
-      --shadow-sm: 0 2px 8px rgba(13, 56, 104, 0.05);
-      --shadow-md: 0 8px 24px rgba(13, 56, 104, 0.08);
-      --shadow-lg: 0 16px 36px rgba(13, 56, 104, 0.12);
-      --radius: 14px;
+      --shadow-sm: 0 2px 8px rgba(15, 44, 77, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 44, 77, 0.08);
+      --shadow-lg: 0 16px 36px rgba(15, 44, 77, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      font-family: var(--font-sans);
+      font-family: var(--font-main);
       background: var(--bg-gradient);
-      color: var(--text-main);
+      color: var(--text-body);
       line-height: 1.7;
       min-height: 100vh;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* 淺藍微光背景波紋 */
+    /* 背景柔和光暈波紋 */
     body::before {
       content: "";
       position: fixed;
-      top: -20vh;
+      top: -15vh;
       left: -10vw;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(147, 197, 253, 0.35) 0%, rgba(224, 242, 254, 0) 70%);
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(240, 246, 252, 0) 70%);
       border-radius: 50%;
       z-index: -1;
       pointer-events: none;
@@ -75,28 +76,27 @@
       position: fixed;
       bottom: -15vh;
       right: -10vw;
-      width: 55vw;
-      height: 55vw;
-      background: radial-gradient(circle, rgba(186, 230, 253, 0.4) 0%, rgba(237, 245, 252, 0) 70%);
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(191, 219, 254, 0.4) 0%, rgba(240, 246, 252, 0) 70%);
       border-radius: 50%;
       z-index: -1;
       pointer-events: none;
     }
 
-    /* 導航列 */
+    /* 頂部導航 */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(237, 245, 252, 0.88);
+      background: rgba(240, 246, 252, 0.92);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(180, 215, 245, 0.6);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(195, 222, 245, 0.8);
     }
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 16px 24px;
+      padding: 14px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -104,574 +104,649 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
-      color: var(--blue-deep);
+      color: var(--blue-navy);
       font-weight: 800;
       font-size: 1.25rem;
-      letter-spacing: -0.02em;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--blue-primary), var(--blue-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
     }
     .brand-badge {
-      background: linear-gradient(135deg, #1d63ed, #0284c7);
-      color: #fff;
-      font-family: var(--font-mono);
+      background: var(--blue-soft);
+      color: var(--blue-primary);
       font-size: 0.75rem;
+      font-weight: 700;
       padding: 3px 8px;
       border-radius: 6px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
     }
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 20px;
       list-style: none;
       align-items: center;
     }
     .nav-links a {
       text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 500;
+      color: var(--text-body);
       font-size: 0.95rem;
-      transition: color 0.2s ease;
+      font-weight: 500;
+      transition: color 0.2s;
     }
     .nav-links a:hover {
       color: var(--blue-primary);
     }
     .nav-btn {
-      background: var(--blue-primary);
+      background: linear-gradient(135deg, var(--blue-primary), #2563eb);
       color: #fff !important;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.88rem !important;
-      font-weight: 600 !important;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(29, 99, 237, 0.25);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(30, 96, 213, 0.25);
+      transition: all 0.2s !important;
     }
     .nav-btn:hover {
-      background: #154fc2;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(29, 99, 237, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30, 96, 213, 0.35);
     }
 
-    /* 主容器 */
+    /* 容器佈局 */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 40px 24px 80px 24px;
+      padding: 40px 24px;
     }
 
     /* Hero 區域 */
     .hero {
       text-align: center;
-      padding: 48px 0 64px 0;
-      max-width: 960px;
-      margin: 0 auto;
+      padding: 50px 20px 60px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(240, 247, 255, 0.6) 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 50px;
+      position: relative;
     }
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(29, 99, 237, 0.08);
-      border: 1px solid rgba(29, 99, 237, 0.2);
+      gap: 6px;
+      background: var(--blue-soft);
       color: var(--blue-primary);
+      padding: 6px 14px;
+      border-radius: 20px;
       font-size: 0.88rem;
       font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 30px;
-      margin-bottom: 24px;
-      font-family: var(--font-mono);
+      margin-bottom: 18px;
     }
-    .hero-title {
-      font-size: 3.2rem;
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--text-title);
       font-weight: 800;
-      color: var(--blue-deep);
-      line-height: 1.22;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
+      line-height: 1.3;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
     }
-    .hero-title span {
-      background: linear-gradient(135deg, #1d63ed 0%, #0284c7 100%);
+    .hero h1 span {
+      background: linear-gradient(135deg, #1d4ed8, #0284c7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-desc {
-      font-size: 1.2rem;
+    .hero p {
+      font-size: 1.15rem;
       color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 30px;
       line-height: 1.8;
-      max-width: 780px;
-      margin: 0 auto 36px auto;
     }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-main {
+      background: linear-gradient(135deg, var(--blue-primary), #2563eb);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(30, 96, 213, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(30, 96, 213, 0.35);
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--blue-primary);
+      border: 1px solid var(--card-border);
+      padding: 13px 26px;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: var(--blue-soft);
+      border-color: var(--blue-primary);
+      transform: translateY(-2px);
+    }
+
+    /* 快捷指標數據 */
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
       margin-top: 40px;
-      padding: 24px;
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
+      padding-top: 30px;
+      border-top: 1px dashed rgba(180, 215, 245, 0.8);
     }
     .stat-item {
       text-align: center;
     }
-    .stat-val {
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue-navy);
       font-family: var(--font-mono);
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: var(--blue-deep);
-    }
-    .stat-val span {
-      font-size: 1.1rem;
-      color: var(--blue-primary);
-      margin-left: 2px;
     }
     .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-light);
+      font-size: 0.9rem;
+      color: var(--text-muted);
       margin-top: 4px;
-      font-weight: 500;
     }
 
-    /* 區塊通用樣式 */
-    .section {
-      margin-top: 72px;
-    }
+    /* 章節標題 */
     .section-header {
-      margin-bottom: 36px;
       text-align: center;
+      margin-bottom: 35px;
     }
-    .section-kicker {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
+    .section-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
       color: var(--blue-primary);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .section-title {
-      font-size: 2.2rem;
-      color: var(--blue-deep);
+      font-size: 1.9rem;
+      color: var(--text-title);
       font-weight: 800;
-      letter-spacing: -0.02em;
+      margin-bottom: 10px;
     }
-    .section-subtitle {
+    .section-desc {
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
       max-width: 680px;
-      margin: 10px auto 0 auto;
+      margin: 0 auto;
     }
 
-    /* 產業特徵分析卡片 */
-    .industry-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .industry-card {
+    /* 通用卡片 */
+    .card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
       border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 32px 26px;
+      padding: 26px;
       box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
-    .industry-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #1d63ed, #38bdf8);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .industry-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+    .card:hover {
       border-color: var(--card-hover-border);
+      box-shadow: var(--shadow-md);
     }
-    .industry-card:hover::before {
-      opacity: 1;
+
+    /* 三大實戰投資法區塊 */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
     }
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--blue-soft);
-      color: var(--blue-primary);
-      border-radius: 12px;
+    .strat-card {
+      border-top: 5px solid var(--blue-primary);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
+      flex-direction: column;
+      position: relative;
     }
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--blue-deep);
-      margin-bottom: 12px;
-    }
-    .card-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .card-chips {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .chip {
-      font-size: 0.78rem;
-      background: rgba(29, 99, 237, 0.08);
-      color: var(--blue-primary);
+    .strat-card.green { border-top-color: var(--accent-green); }
+    .strat-card.amber { border-top-color: var(--accent-amber); }
+    .strat-card.purple { border-top-color: var(--accent-purple); }
+
+    .strat-badge {
+      display: inline-block;
       padding: 4px 10px;
       border-radius: 6px;
-      font-family: var(--font-mono);
-      font-weight: 500;
-    }
-
-    /* 學術文獻引用庫 */
-    .literature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .paper-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 32px;
-      transition: all 0.25s ease;
-    }
-    .paper-card:hover {
-      border-color: #3b82f6;
-      box-shadow: var(--shadow-md);
-    }
-    .paper-meta {
-      border-right: 1px dashed rgba(180, 215, 245, 0.8);
-      padding-right: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .paper-authors {
-      font-size: 0.95rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--blue-deep);
-    }
-    .paper-journal {
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      margin-top: 4px;
-    }
-    .paper-year {
-      display: inline-block;
-      margin-top: 12px;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 600;
+      margin-bottom: 12px;
       width: fit-content;
     }
-    .paper-role {
-      margin-top: 16px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--blue-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .paper-content h4 {
-      font-size: 1.2rem;
-      color: var(--blue-deep);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .paper-content p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.7;
-    }
-    .paper-quote {
-      background: rgba(240, 249, 255, 0.85);
-      border-left: 3px solid var(--blue-primary);
-      padding: 10px 16px;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.88rem;
-      color: var(--text-main);
-      font-family: var(--font-mono);
-    }
+    .strat-badge.green { background: var(--accent-green-bg); color: var(--accent-green); }
+    .strat-badge.amber { background: var(--accent-amber-bg); color: var(--accent-amber); }
+    .strat-badge.purple { background: var(--accent-purple-bg); color: var(--accent-purple); }
 
-    /* 投資策略四維度框架 */
-    .framework-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .step-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 28px 22px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-    }
-    .step-badge {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
+    .strat-title {
+      font-size: 1.35rem;
+      color: var(--text-title);
       font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, #1d63ed, #0284c7);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
-    .step-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--blue-deep);
-      margin-bottom: 8px;
-    }
-    .step-source {
-      font-size: 0.78rem;
-      color: var(--blue-primary);
-      font-family: var(--font-mono);
-      margin-bottom: 14px;
-      font-weight: 600;
-    }
-    .step-rules {
-      list-style: none;
-      font-size: 0.88rem;
+    .strat-target {
+      font-size: 0.92rem;
       color: var(--text-muted);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      background: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      border-left: 3px solid #cbd5e1;
     }
-    .step-rules li {
+    .strat-steps {
+      list-style: none;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .strat-steps li {
+      font-size: 0.94rem;
+      margin-bottom: 10px;
+      padding-left: 22px;
       position: relative;
-      padding-left: 16px;
     }
-    .step-rules li::before {
-      content: "•";
-      color: var(--blue-primary);
+    .strat-steps li::before {
+      content: "✓";
       position: absolute;
       left: 0;
+      color: var(--blue-primary);
       font-weight: bold;
     }
-
-    /* 互動式 F-Score 檢測與模擬器 */
-    .interactive-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 36px;
-      box-shadow: var(--shadow-md);
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-    }
-    .fscore-checklist {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .checklist-title {
-      font-weight: 700;
-      color: var(--blue-deep);
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      background: #f8fbfe;
-      border: 1px solid rgba(186, 218, 245, 0.4);
+    .strat-stocks {
+      background: var(--blue-soft);
+      padding: 12px 14px;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s;
+      font-size: 0.88rem;
+      color: var(--blue-navy);
     }
-    .checklist-item:hover {
-      background: #eff6fc;
-    }
-    .checklist-item input {
-      margin-top: 5px;
-      accent-color: var(--blue-primary);
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-    }
-    .item-text {
-      font-size: 0.92rem;
-      color: var(--text-main);
-      font-weight: 500;
-    }
-    .item-sub {
-      font-size: 0.78rem;
-      color: var(--text-light);
+    .strat-stocks strong {
       display: block;
-      margin-top: 2px;
+      margin-bottom: 4px;
     }
 
-    /* 評分看板儀表板 */
-    .score-board {
-      background: linear-gradient(145deg, #0b2545, #113665);
-      border-radius: 12px;
-      padding: 32px 24px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: center;
+    /* 互動小測驗區塊 */
+    .quiz-container {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+      border: 2px solid #bae6fd;
+      border-radius: var(--radius-lg);
+      padding: 35px;
+      margin-bottom: 60px;
+      box-shadow: var(--shadow-md);
     }
-    .score-circle {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 6px solid #38bdf8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.05);
+    .quiz-question {
+      margin-bottom: 24px;
     }
-    .score-num {
-      font-family: var(--font-mono);
-      font-size: 3.2rem;
-      font-weight: 800;
-      line-height: 1;
-      color: #38bdf8;
-    }
-    .score-total {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-    .score-status {
-      font-size: 1.3rem;
+    .quiz-q-title {
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .score-recommendation {
-      font-size: 0.9rem;
-      opacity: 0.85;
-      line-height: 1.6;
-      padding: 0 10px;
-    }
-
-    /* 個股標的池與回測範例表 */
-    .table-container {
-      margin-top: 24px;
-      overflow-x: auto;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.92rem;
-    }
-    th {
-      background: #e3effa;
-      color: var(--blue-deep);
-      font-weight: 700;
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--card-border);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-    td {
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(186, 218, 245, 0.4);
-      color: var(--text-main);
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td {
-      background: rgba(240, 249, 255, 0.6);
-    }
-    .tag-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.76rem;
-      font-weight: 600;
-      font-family: var(--font-mono);
-    }
-    .tag-blue { background: #e0f2fe; color: #0369a1; }
-    .tag-green { background: #dcfce7; color: #15803d; }
-    .tag-amber { background: #fef3c7; color: #b45309; }
-
-    /* SOP 執行與風險管理 */
-    .sop-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .sop-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
-    }
-    .sop-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--blue-deep);
+      color: var(--blue-navy);
       margin-bottom: 12px;
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .quiz-option {
+      background: #fff;
+      border: 1.5px solid #d0e4f7;
+      padding: 14px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 0.95rem;
     }
-    .sop-icon {
-      color: var(--blue-primary);
-      font-size: 1.25rem;
+    .quiz-option:hover {
+      border-color: var(--blue-primary);
+      background: #f0f8ff;
     }
-    .sop-desc {
-      font-size: 0.92rem;
+    .quiz-option.active {
+      border-color: var(--blue-primary);
+      background: #e0effe;
+      color: var(--blue-navy);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(30, 96, 213, 0.15);
+    }
+    .quiz-result-box {
+      display: none;
+      margin-top: 30px;
+      padding: 24px;
+      background: #fff;
+      border-radius: var(--radius-md);
+      border: 2px solid #38bdf8;
+      box-shadow: var(--shadow-md);
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* 互動選股地圖 (20+ 家公司) */
+    .screener-section {
+      margin-bottom: 60px;
+    }
+    .screener-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text-body);
+    }
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--blue-primary);
+      color: #fff;
+      border-color: var(--blue-primary);
+    }
+    .search-box {
+      position: relative;
+      min-width: 250px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      font-size: 0.9rem;
+      outline: none;
+      background: #fff;
+    }
+    .search-input:focus {
+      border-color: var(--blue-primary);
+      box-shadow: 0 0 0 3px rgba(30, 96, 213, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       color: var(--text-muted);
-      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    .stock-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .stock-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-primary);
+    }
+    .stock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .stock-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue-navy);
+    }
+    .stock-code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: #f1f5f9;
+      padding: 2px 7px;
+      border-radius: 5px;
+      color: var(--text-muted);
+    }
+    .stock-category {
+      font-size: 0.78rem;
+      color: var(--blue-primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .stock-desc {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      margin-bottom: 14px;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+    .stock-footer {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 10px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stock-tag-pill {
+      background: #f0fdf4;
+      color: #166534;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* 3分鐘健康檢查器 */
+    .health-checker {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 35px;
+      margin-bottom: 60px;
+      box-shadow: var(--shadow-sm);
+    }
+    .checker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .check-item:hover {
+      background: #f0f7ff;
+      border-color: #93c5fd;
+    }
+    .check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--blue-primary);
+      cursor: pointer;
+    }
+    .check-text h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--blue-navy);
+      margin-bottom: 3px;
+    }
+    .check-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .score-banner {
+      background: var(--blue-soft);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 15px;
+    }
+    .score-display {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--blue-navy);
+    }
+    .score-verdict {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0369a1;
+    }
+
+    /* 定期定額與風控試算小工具 */
+    .calc-container {
+      background: linear-gradient(135deg, #f8fbff 0%, #edf6fe 100%);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 35px;
+      margin-bottom: 60px;
+    }
+    .calc-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .input-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue-navy);
+      margin-bottom: 6px;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+    }
+    .calc-results {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 1.5px solid #bae6fd;
+      box-shadow: var(--shadow-sm);
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.95rem;
+    }
+    .calc-row:last-child {
+      border-bottom: none;
+      padding-top: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--blue-primary);
+    }
+
+    /* 學術權威佐證區（折疊/優雅簡約） */
+    .citations-section {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 35px;
+      margin-bottom: 60px;
+    }
+    .citation-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .citation-card {
+      background: #f8fafc;
+      border-left: 4px solid var(--blue-primary);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+    }
+    .citation-author {
+      font-weight: 700;
+      color: var(--blue-navy);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .citation-journal {
+      font-size: 0.82rem;
+      color: var(--blue-cyan);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .citation-takeaway {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* 頁尾 */
     footer {
-      background: #081a30;
+      background: #0f2c4d;
       color: #94a3b8;
-      padding: 48px 24px 36px 24px;
-      margin-top: 80px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.9rem;
+      padding: 45px 24px 30px;
+      margin-top: 60px;
     }
-    .footer-container {
+    .footer-content {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
@@ -680,40 +755,35 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-brand {
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
     .footer-links a {
-      color: #94a3b8;
+      color: #cbd5e1;
       text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
     .footer-links a:hover {
-      color: #38bdf8;
+      color: #fff;
+    }
+    .disclaimer {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #1e3a5f;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
     }
 
-    /* 響應式優化 */
-    @media (max-width: 992px) {
-      .hero-title { font-size: 2.5rem; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); }
-      .industry-grid { grid-template-columns: 1fr; }
-      .paper-card { grid-template-columns: 1fr; gap: 16px; }
-      .paper-meta { border-right: none; border-bottom: 1px dashed rgba(180, 215, 245, 0.8); padding-bottom: 16px; }
-      .framework-grid { grid-template-columns: repeat(2, 1fr); }
-      .interactive-box { grid-template-columns: 1fr; }
-      .sop-grid { grid-template-columns: 1fr; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 640px) {
-      .hero-title { font-size: 2rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.9rem; }
       .nav-links { display: none; }
-      .framework-grid { grid-template-columns: 1fr; }
-      .hero-stats { grid-template-columns: 1fr; }
+      .checker-grid, .quiz-options { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -723,530 +793,709 @@
   <header>
     <div class="nav-container">
       <a href="#" class="brand">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1d63ed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-          <polyline points="16 7 22 7 22 13"></polyline>
-        </svg>
-        <span>智投硬體 · QuantHardware</span>
-        <span class="brand-badge">ACADEMIC STRATEGY</span>
+        <div class="brand-icon">💻</div>
+        <span>台股電腦及週邊設備實戰投資網</span>
+        <span class="brand-badge">2026 最新版</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#industry">產業特徵</a></li>
-        <li><a href="#literature">學術文獻</a></li>
-        <li><a href="#framework">策略框架</a></li>
-        <li><a href="#interactive">F-Score 試算</a></li>
-        <li><a href="#screener">選股池</a></li>
-        <li><a href="#sop">風控 SOP</a></li>
-        <li><a href="#interactive" class="nav-btn">F-Score 健檢器</a></li>
+        <li><a href="#methods">三大實戰法</a></li>
+        <li><a href="#quiz">推薦測驗</a></li>
+        <li><a href="#stocks">20+精選個股</a></li>
+        <li><a href="#health">3分鐘健檢</a></li>
+        <li><a href="#calc">定投/風控試算</a></li>
+        <li><a href="#science">文獻佐證</a></li>
+        <li><a href="#quiz" class="nav-btn">測測適合我的股票</a></li>
       </ul>
     </div>
   </header>
 
   <div class="container">
-    
-    <!-- Hero 主視覺 -->
+
+    <!-- Hero 區域 -->
     <section class="hero">
-      <div class="hero-tag">
-        <span style="font-size: 1.1rem">⚡</span> 電腦及週邊設備業 (TWSE: 23xx / 30xx / 32xx)
-      </div>
-      <h1 class="hero-title">
-        電腦及週邊設備類股<br>
-        <span>學術文獻量化投資策略</span>
-      </h1>
-      <p class="hero-desc">
-        針對台灣科技硬體族群之「景氣循環劇烈」、「代工毛三到四分化」與「存貨波動大」三大特性，
-        融合理論頂尖之 <strong>Piotroski F-Score</strong> 財務健檢、<strong>Fama-French</strong> 多因子定價與 
-        <strong>Novy-Marx</strong> 毛利溢價模型，打造兼具防禦力與超額報酬（Alpha）的系統化選股體系。
+      <div class="hero-tag">💡 給一般投資人的白話實戰指南</div>
+      <h1>看懂<span>電腦及週邊設備股</span>的致勝投資法</h1>
+      <p>
+        告別晦澀的財務術語與繁瑣公式！台灣在全球 AI 伺服器與硬體零組件具備不可替代的統治地位。<br>
+        本站歸納出<strong>散戶最容易上手的 3 大投資法</strong>，彙整 <strong>20+ 家指標龍頭公司</strong>，搭配互動式檢測與諾貝爾級科學實證背書，助你穩健掌握硬體紅利！
       </p>
+      <div class="hero-actions">
+        <a href="#quiz" class="btn-main">🎯 1分鐘測驗：找出適合我的硬體股</a>
+        <a href="#stocks" class="btn-secondary">📋 瀏覽 20+ 精選硬體公司地圖</a>
+      </div>
 
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-val">4.8<span>兆 NT$</span></div>
-          <div class="stat-label">台股電腦及週邊市值佔比</div>
+          <div class="stat-number">80%+</div>
+          <div class="stat-label">全球 AI 伺服器由台廠組裝製造</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">9<span>大指標</span></div>
-          <div class="stat-label">Piotroski 財務健全度嚴格篩選</div>
+          <div class="stat-number">20+ 家</div>
+          <div class="stat-label">站內涵蓋之電腦及週邊指標企業</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">15<span>%↑</span></div>
-          <div class="stat-label">Novy-Marx 高毛利門檻濾除組裝</div>
+          <div class="stat-number">3 大方法</div>
+          <div class="stat-label">存股、波段、景氣逆向白話策略</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">+14.6<span>%</span></div>
-          <div class="stat-label">歷史回測年化超額報酬 (Alpha)</div>
+          <div class="stat-number">4 篇權威</div>
+          <div class="stat-label">國際頂尖金融學術實證嚴格背書</div>
         </div>
       </div>
     </section>
 
-    <!-- 區塊一：產業特徵與量化痛點 -->
-    <section id="industry" class="section">
+
+    <!-- 第一章：三大實戰投資方法 -->
+    <section id="methods" style="margin-bottom: 60px;">
       <div class="section-header">
-        <div class="section-kicker">INDUSTRY DYNAMICS</div>
-        <h2 class="section-title">為什麼電腦及週邊設備類股需要特定策略？</h2>
-        <p class="section-subtitle">
-          電腦硬體設備業橫跨 ODM/OEM 代工、伺服器、散熱機殼、工業電腦（IPC）到品牌廠，基本面分化極為劇烈。
-        </p>
+        <div class="section-tag">INVESTMENT METHODOLOGY</div>
+        <h2 class="section-title">建議投資人怎麼投資？三大實戰法</h2>
+        <p class="section-desc">不同資金規模與個性，該用哪種方法操作電腦及週邊股？以下三種策略任你挑選：</p>
       </div>
 
-      <div class="industry-grid">
-        <div class="industry-card">
-          <div class="card-icon">📊</div>
-          <h3 class="card-title">毛利率天壤之別：拒絕低附加價值</h3>
-          <p class="card-desc">
-            傳統消費性 NB/PC 組裝代工毛利率常在「保三保四（3%~5%）」掙扎；然而高階 AI 伺服器水冷散熱（如奇鋐、雙鴻）或工業電腦（如研華）毛利率高達 25%~40%。純看本益比極易落入低利潤的代工價值陷阱。
-          </p>
-          <div class="card-chips">
-            <span class="chip">毛利率溢價因子</span>
-            <span class="chip">Novy-Marx (2013)</span>
+      <div class="strategy-grid">
+        <!-- 方法一 -->
+        <div class="card strat-card green">
+          <span class="strat-badge green">方法一 · 長期穩健型</span>
+          <h3 class="strat-title">🛡️ 護城河高息存股法</h3>
+          <div class="strat-target">適合對象：上班族、退休領息族、不想天天盯盤的穩健投資人</div>
+          <ul class="strat-steps">
+            <li><strong>選股重點：</strong>鎖定客製化程度高、客戶黏著度極強的「工業電腦 (IPC)」或利基型零組件廠。</li>
+            <li><strong>財報濾網：</strong>近 5 年毛利率維持 30% 以上、自由現金流連年為正、配息率高於 70%。</li>
+            <li><strong>操作密技：</strong>當殖利率超過 4.5%~5% 或本益比落在歷史低位時，採定期定額分批累積張數。</li>
+          </ul>
+          <div class="strat-stocks">
+            <strong>🌟 代表推薦追蹤股：</strong>
+            研華 (2395)、樺漢 (6414)、廣積 (8050)、立端 (6245)
           </div>
         </div>
 
-        <div class="industry-card">
-          <div class="card-icon">🔄</div>
-          <h3 class="card-title">強烈的庫存與資本支出循環</h3>
-          <p class="card-desc">
-            硬體類股受全球科技換機潮（如 Win 11、AI PC、資料中心算力升級）影響深刻。當零組件短缺時過度拉貨，常導致後續數季承受高額存貨跌價損失。必須以嚴格的「營業現金流 > 稅後淨利」進行體質護航。
-          </p>
-          <div class="card-chips">
-            <span class="chip">盈餘品質檢驗</span>
-            <span class="chip">Piotroski (2000)</span>
+        <!-- 方法二 -->
+        <div class="card strat-card amber">
+          <span class="strat-badge amber">方法二 · 波段成長型</span>
+          <h3 class="strat-title">🚀 AI 動能爆發順勢法</h3>
+          <div class="strat-target">適合對象：追求資本利得、能接受股價中度波動的積極型投資人</div>
+          <ul class="strat-steps">
+            <li><strong>選股重點：</strong>鎖定產能滿載、規格出現重大跳躍升級者（如氣冷轉水冷散熱、AI 伺服器組裝）。</li>
+            <li><strong>指標濾網：</strong>單月營收「年月雙增」、法說會上修資本支出、股價站上 20 日與 60 日均線。</li>
+            <li><strong>操作密技：</strong>動能突破時進場，以 20 日均線（月線）為移動防守點，跌破或回檔 8% 堅決停損。</li>
+          </ul>
+          <div class="strat-stocks">
+            <strong>🌟 代表推薦追蹤股：</strong>
+            廣達 (2382)、緯創 (3231)、奇鋐 (3017)、雙鴻 (3324)、川湖 (2059)
           </div>
         </div>
 
-        <div class="industry-card">
-          <div class="card-icon">🚀</div>
-          <h3 class="card-title">規格升級催化的動能超循環</h3>
-          <p class="card-desc">
-            當伺服器從氣冷走向液冷、功耗從 300W 飆升至 1000W+，產業龍頭訂單將爆發成長。學術研究證實，在基本面高分的前提下，結合 3~6 個月營收年增率（YoY）動能，能大幅捕捉獲利上修的主升段。
-          </p>
-          <div class="card-chips">
-            <span class="chip">動能效應</span>
-            <span class="chip">Jegadeesh-Titman (1993)</span>
+        <!-- 方法三 -->
+        <div class="card strat-card purple">
+          <span class="strat-badge purple">方法三 · 景氣循環型</span>
+          <h3 class="strat-title">🔄 循環底部逆向反轉法</h3>
+          <div class="strat-target">適合對象：有耐心的價值波段獵人、喜歡逢低買進潛力反轉股</div>
+          <ul class="strat-steps">
+            <li><strong>選股重點：</strong>歷史悠久的 PC/NB 代工與品牌大廠，受景氣庫存去化影響而股價被過度低估。</li>
+            <li><strong>指標濾網：</strong>存貨週轉天數連續 2 季下降、股價淨值比 (P/B) 位於歷史 10% 分位數底部。</li>
+            <li><strong>操作密技：</strong>在市場一片看壞時左側分批布局，等待換機潮爆發、法人回補，獲利 25%~30% 分批停利。</li>
+          </ul>
+          <div class="strat-stocks">
+            <strong>🌟 代表推薦追蹤股：</strong>
+            仁寶 (2324)、英業達 (2356)、宏碁 (2353)、華碩 (2357)、微星 (2377)
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 區塊二：學術文獻理論支柱 -->
-    <section id="literature" class="section">
+
+    <!-- 第二章：互動小測驗 (Interactive Quiz) -->
+    <section id="quiz">
+      <div class="quiz-container">
+        <div class="section-header" style="margin-bottom: 25px;">
+          <div class="section-tag">INTERACTIVE QUIZ</div>
+          <h2 class="section-title">🧭 互動測驗：找出最適合你的硬體股票！</h2>
+          <p class="section-desc">只要回答 3 個簡單問題，系統自動為你匹配最佳投資風格與個股名單：</p>
+        </div>
+
+        <div class="quiz-question">
+          <div class="quiz-q-title">Q1. 你的主要投資目標是什麼？</div>
+          <div class="quiz-options" id="quiz-q1">
+            <div class="quiz-option active" data-val="safe" onclick="selectQuiz(1, this, 'safe')">
+              <span>🛡️ 穩定配息，資產能抵抗通膨</span>
+            </div>
+            <div class="quiz-option" data-val="growth" onclick="selectQuiz(1, this, 'growth')">
+              <span>🚀 追求波段大漲與 AI 成長紅利</span>
+            </div>
+            <div class="quiz-option" data-val="value" onclick="selectQuiz(1, this, 'value')">
+              <span>🔄 逢低撿便宜，等待大行情反轉</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <div class="quiz-q-title">Q2. 你平常能花多少時間看盤關注股市？</div>
+          <div class="quiz-options" id="quiz-q2">
+            <div class="quiz-option active" data-val="safe" onclick="selectQuiz(2, this, 'safe')">
+              <span>☕ 幾乎沒時間看，希望每個月買了就不用管</span>
+            </div>
+            <div class="quiz-option" data-val="growth" onclick="selectQuiz(2, this, 'growth')">
+              <span>📈 每天或每週都會看盤，會留意最新 AI 新聞</span>
+            </div>
+            <div class="quiz-option" data-val="value" onclick="selectQuiz(2, this, 'value')">
+              <span>📊 每季檢視一次財報與庫存數據即可</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <div class="quiz-q-title">Q3. 如果持股短期跌了 10%，你的心理感受是？</div>
+          <div class="quiz-options" id="quiz-q3">
+            <div class="quiz-option active" data-val="safe" onclick="selectQuiz(3, this, 'safe')">
+              <span>😰 會感到焦慮不安，希望波動越小越好</span>
+            </div>
+            <div class="quiz-option" data-val="growth" onclick="selectQuiz(3, this, 'growth')">
+              <span>⚡ 只要大趨勢在就沒問題，嚴格執行紀律停損</span>
+            </div>
+            <div class="quiz-option" data-val="value" onclick="selectQuiz(3, this, 'value')">
+              <span>💰 太棒了！基本面沒壞，這是加碼撿便宜的好機會</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="btn-main" onclick="calcQuizResult()">🔍 點擊分析我的專屬投資策略</button>
+        </div>
+
+        <!-- 測驗結果卡 -->
+        <div id="quiz-result" class="quiz-result-box">
+          <h3 id="result-title" style="color: var(--blue-navy); margin-bottom: 8px; font-size: 1.3rem;"></h3>
+          <p id="result-desc" style="color: var(--text-body); margin-bottom: 16px; font-size: 0.95rem;"></p>
+          <div id="result-recommendation" style="background: #f0f7ff; padding: 15px; border-radius: 8px; border: 1px solid #bfdbfe;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 第三章：20+ 精選個股全景池 (Interactive Stock Directory) -->
+    <section id="stocks" class="screener-section">
       <div class="section-header">
-        <div class="section-kicker">THEORETICAL FOUNDATION</div>
-        <h2 class="section-title">核心學術文獻引用與理論淵源</h2>
-        <p class="section-subtitle">
-          本投資策略並非隨機技術指標拼湊，而是奠基於頂尖財務金融學術期刊經同行審查之經典實證模型。
-        </p>
+        <div class="section-tag">COMPREHENSIVE STOCK UNIVERSE</div>
+        <h2 class="section-title">台股電腦及週邊設備類股 · 20+ 精選代表公司</h2>
+        <p class="section-desc">提供全方位台股電腦供應鏈地圖，可依次產業分類快選或直接搜尋代號/名稱：</p>
       </div>
 
-      <div class="literature-list">
-        <!-- 文獻 1 -->
-        <div class="paper-card">
-          <div class="paper-meta">
+      <div class="screener-controls">
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterStocks('all', this)">全部全部 (20+)</button>
+          <button class="filter-tab" onclick="filterStocks('server', this)">🤖 AI 伺服器代工</button>
+          <button class="filter-tab" onclick="filterStocks('cooling', this)">❄️ 散熱與機構件</button>
+          <button class="filter-tab" onclick="filterStocks('ipc', this)">🏭 工業電腦 (IPC)</button>
+          <button class="filter-tab" onclick="filterStocks('brand', this)">💻 PC/NB 品牌與週邊</button>
+        </div>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="stock-search" class="search-input" placeholder="輸入名稱或代號 (如: 廣達, 3017)..." oninput="searchStocks()">
+        </div>
+      </div>
+
+      <!-- 股票卡片網格 -->
+      <div class="stock-grid" id="stock-container">
+        <!-- 股票 1: 廣達 -->
+        <div class="stock-card" data-cat="server" data-name="廣達 2382">
+          <div class="stock-header">
             <div>
-              <div class="paper-authors">Piotroski, Joseph D.</div>
-              <div class="paper-journal">Journal of Accounting Research, Vol. 38, pp. 1-41.</div>
-              <span class="paper-year">JAR 2000</span>
+              <div class="stock-name">廣達</div>
+              <div class="stock-category">AI 伺服器 / 雲端龍頭</div>
             </div>
-            <div class="paper-role">核心健檢過濾器</div>
+            <span class="stock-code">2382</span>
           </div>
-          <div class="paper-content">
-            <h4>Value Investing: The Use of Historical Financial Statement Information to Separate Winners from Losers</h4>
-            <p>
-              史丹佛大學會計學教授 Piotroski 提出著名的 9 項指標「F-Score 模型」。該論文實證發現，在低估值股票中，超過半數公司面臨基本面惡化；透過獲利能力（ROA、CFO）、財務槓桿（長債、流動比率）及營運效率（毛利率、週轉率）進行 0-9 分量化評分，能完全剔除「價值陷阱」，每年創造高達 23% 的顯著超額報酬。
-            </p>
-            <div class="paper-quote">
-              策略應用：要求電腦週邊股 F-Score ≥ 7 分，杜絕存貨積壓與應收帳款拖垮現金流的危險代工廠。
+          <div class="stock-desc">全球筆電與 AI 伺服器組裝霸主，與輝達（NVIDIA）合作極深，是 AI 浪潮核心受惠者。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>高成長 / 大市值</span>
+          </div>
+        </div>
+
+        <!-- 股票 2: 緯創 -->
+        <div class="stock-card" data-cat="server" data-name="緯創 3231">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">緯創</div>
+              <div class="stock-category">AI 伺服器基板 / 系統</div>
             </div>
+            <span class="stock-code">3231</span>
+          </div>
+          <div class="stock-desc">主攻 GPU 加速運算基板（UBB），近年成功轉型高毛利伺服器領域，營運爆發力強。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>轉型成功 / 爆發性高</span>
+          </div>
+        </div>
+
+        <!-- 股票 3: 緯穎 -->
+        <div class="stock-card" data-cat="server" data-name="緯穎 6669">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">緯穎</div>
+              <div class="stock-category">雲端超大規模資料中心</div>
+            </div>
+            <span class="stock-code">6669</span>
+          </div>
+          <div class="stock-desc">白牌伺服器純度最高指標股，客戶涵蓋 Meta、微軟等國際 CSP 巨頭，獲利能力傲視群雄。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>高獲利高價股</span>
+          </div>
+        </div>
+
+        <!-- 股票 4: 奇鋐 -->
+        <div class="stock-card" data-cat="cooling" data-name="奇鋐 3017">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">奇鋐</div>
+              <div class="stock-category">散熱模組 / 水冷系統</div>
+            </div>
+            <span class="stock-code">3017</span>
+          </div>
+          <div class="stock-desc">全球伺服器散熱領頭羊，提供從風扇、3D VC 到水冷板與冷卻液分配裝置 (CDU) 的一條龍解決方案。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>技術定價權 / 水冷熱門</span>
+          </div>
+        </div>
+
+        <!-- 股票 5: 雙鴻 -->
+        <div class="stock-card" data-cat="cooling" data-name="雙鴻 3324">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">雙鴻</div>
+              <div class="stock-category">水冷模組 / 散熱先鋒</div>
+            </div>
+            <span class="stock-code">3324</span>
+          </div>
+          <div class="stock-desc">率先切入水冷散熱零組件認證，產品毛利率逐季提升，深獲北美大型資料中心青睞。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>高毛利潛力股</span>
+          </div>
+        </div>
+
+        <!-- 股票 6: 川湖 -->
+        <div class="stock-card" data-cat="cooling" data-name="川湖 2059">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">川湖</div>
+              <div class="stock-category">伺服器導軌 / 專利護城河</div>
+            </div>
+            <span class="stock-code">2059</span>
+          </div>
+          <div class="stock-desc">全球高階伺服器導軌市占第一，手握龐大專利壁壘，毛利率長年維持 60% 以上的神級企業。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🛡️ 護城河成長</span>
+            <span>超高毛利 / 全球壟斷</span>
+          </div>
+        </div>
+
+        <!-- 股票 7: 研華 -->
+        <div class="stock-card" data-cat="ipc" data-name="研華 2395">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">研華</div>
+              <div class="stock-category">工業電腦龍頭 / 物聯網</div>
+            </div>
+            <span class="stock-code">2395</span>
+          </div>
+          <div class="stock-desc">全球工業電腦市占率第一，財務結構極度健康、負債率低，近 20 年年年穩定高額配息。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#e0f2fe; color:#0369a1;">🛡️ 存股首選</span>
+            <span>護城河深 / 財務健康</span>
+          </div>
+        </div>
+
+        <!-- 股票 8: 樺漢 -->
+        <div class="stock-card" data-cat="ipc" data-name="樺漢 6414">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">樺漢</div>
+              <div class="stock-category">智慧邊緣運算 / 工業平台</div>
+            </div>
+            <span class="stock-code">6414</span>
+          </div>
+          <div class="stock-desc">鴻海集團旗下工業電腦大將，佈局歐洲智慧製造與金融軟硬整合，在手訂單能見度極長。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#e0f2fe; color:#0369a1;">🛡️ 穩健成長</span>
+            <span>高營收規模 / 穩定訂單</span>
+          </div>
+        </div>
+
+        <!-- 股票 9: 英業達 -->
+        <div class="stock-card" data-cat="server" data-name="英業達 2356">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">英業達</div>
+              <div class="stock-category">伺服器代工 / 邊緣 AI</div>
+            </div>
+            <span class="stock-code">2356</span>
+          </div>
+          <div class="stock-desc">主機板與伺服器代工老牌大廠，積極跨足邊緣運算晶片設計與高性價比伺服器代工。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#fef3c7; color:#b45309;">🔄 景氣反轉法</span>
+            <span>股息殖利率優 / 低估值</span>
+          </div>
+        </div>
+
+        <!-- 股票 10: 仁寶 -->
+        <div class="stock-card" data-cat="brand" data-name="仁寶 2324">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">仁寶</div>
+              <div class="stock-category">筆電代工 / 伺服器拓展</div>
+            </div>
+            <span class="stock-code">2324</span>
+          </div>
+          <div class="stock-desc">全球筆記型電腦出貨巨頭，近年策略聚焦提高毛利率、擴大車用電子與醫療物聯網產品線。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#fef3c7; color:#b45309;">🔄 景氣反轉法</span>
+            <span>高殖利率 / 適合存股反轉</span>
+          </div>
+        </div>
+
+        <!-- 股票 11: 技嘉 -->
+        <div class="stock-card" data-cat="server" data-name="技嘉 2376">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">技嘉</div>
+              <div class="stock-category">AI 伺服器 / 主機板電競</div>
+            </div>
+            <span class="stock-code">2376</span>
+          </div>
+          <div class="stock-desc">由傳統板卡大廠成功切入 AI 伺服器自有品牌，靈活性高且對新晶片平台響應速度居業界前茅。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>彈性高 / 成長力強</span>
+          </div>
+        </div>
+
+        <!-- 股票 12: 華碩 -->
+        <div class="stock-card" data-cat="brand" data-name="華碩 2357">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">華碩</div>
+              <div class="stock-category">PC/NB 品牌 / AI PC</div>
+            </div>
+            <span class="stock-code">2357</span>
+          </div>
+          <div class="stock-desc">全球知名電腦巨頭，深耕 ROG 電競品牌與全新 AI PC 產品線，現金股利配發一向大方。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#fef3c7; color:#b45309;">🔄 景氣反轉法</span>
+            <span>品牌影響力大 / 換機潮</span>
+          </div>
+        </div>
+
+        <!-- 股票 13: 微星 -->
+        <div class="stock-card" data-cat="brand" data-name="微星 2377">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">微星</div>
+              <div class="stock-category">高階電競筆電 / 板卡</div>
+            </div>
+            <span class="stock-code">2377</span>
+          </div>
+          <div class="stock-desc">全球頂級電競硬體知名品牌，在歐美遊戲玩家心中黏著度高，受惠於新世代顯卡換代升級。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#fef3c7; color:#b45309;">🔄 景氣反轉法</span>
+            <span>電競黏著度高 / 獲利穩</span>
+          </div>
+        </div>
+
+        <!-- 股票 14: 宏碁 -->
+        <div class="stock-card" data-cat="brand" data-name="宏碁 2353">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">宏碁</div>
+              <div class="stock-category">全球 PC 品牌 / 猛虎策略</div>
+            </div>
+            <span class="stock-code">2353</span>
+          </div>
+          <div class="stock-desc">台灣老牌科技品牌，推動多角化小金雞子公司上市（猛虎計畫），整體獲利結構顯著優化。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#fef3c7; color:#b45309;">🔄 景氣反轉法</span>
+            <span>小金雞加持 / 轉型題材</span>
+          </div>
+        </div>
+
+        <!-- 股票 15: 建準 -->
+        <div class="stock-card" data-cat="cooling" data-name="建準 2421">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">建準</div>
+              <div class="stock-category">伺服器精密風扇 / 散熱</div>
+            </div>
+            <span class="stock-code">2421</span>
+          </div>
+          <div class="stock-desc">全球高規格精密微型風扇領導者，在 AI 伺服器電源風扇及高階散熱風扇具高市占率。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>精密散熱核心 / 規格升級</span>
+          </div>
+        </div>
+
+        <!-- 股票 16: 健策 -->
+        <div class="stock-card" data-cat="cooling" data-name="健策 3653">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">健策</div>
+              <div class="stock-category">均熱片 (Heat Sink) 龍頭</div>
+            </div>
+            <span class="stock-code">3653</span>
+          </div>
+          <div class="stock-desc">晶片端頂級均熱片供應商，深獲全球 GPU 與 CPU 巨擘指定採用，是熱傳導第一線關鍵關鍵件。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>技術門檻極高 / 供應鏈寡占</span>
+          </div>
+        </div>
+
+        <!-- 股票 17: 勤誠 -->
+        <div class="stock-card" data-cat="cooling" data-name="勤誠 8210">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">勤誠</div>
+              <div class="stock-category">伺服器機殼龍頭</div>
+            </div>
+            <span class="stock-code">8210</span>
+          </div>
+          <div class="stock-desc">全球伺服器機箱領導廠商，深度配合美系 CSP 客製化高承重、高散熱風道之 AI 伺服器外殼。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>機構件不可或缺 / 訂單滿</span>
+          </div>
+        </div>
+
+        <!-- 股票 18: 晟銘電 -->
+        <div class="stock-card" data-cat="cooling" data-name="晟銘電 3013">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">晟銘電</div>
+              <div class="stock-category">AI 機箱 / 水冷機櫃</div>
+            </div>
+            <span class="stock-code">3013</span>
+          </div>
+          <div class="stock-desc">專注伺服器機殼與水冷機櫃整機機構開發，與大廠緊密合作進軍大規模資料中心市場。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill">🚀 波段動能法</span>
+            <span>水冷機櫃題材 / 爆發力強</span>
+          </div>
+        </div>
+
+        <!-- 股票 19: 光寶科 -->
+        <div class="stock-card" data-cat="server" data-name="光寶科 2301">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">光寶科</div>
+              <div class="stock-category">高階雲端電源 / 儲能</div>
+            </div>
+            <span class="stock-code">2301</span>
+          </div>
+          <div class="stock-desc">全球高瓦數 AI 伺服器電源核心供應商，近年大幅精簡低利潤業務，毛利率與配息年年增長。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#e0f2fe; color:#0369a1;">🛡️ 存股穩健</span>
+            <span>高瓦數電源大贏家 / 配息穩</span>
+          </div>
+        </div>
+
+        <!-- 股票 20: 廣積 -->
+        <div class="stock-card" data-cat="ipc" data-name="廣積 8050">
+          <div class="stock-header">
+            <div>
+              <div class="stock-name">廣積</div>
+              <div class="stock-category">工業主機板 / 網通硬體</div>
+            </div>
+            <span class="stock-code">8050</span>
+          </div>
+          <div class="stock-desc">利基型工業電腦專案大廠，深耕網通資安硬體與智慧零售，配息穩定且具備利基防禦特性。</div>
+          <div class="stock-footer">
+            <span class="stock-tag-pill" style="background:#e0f2fe; color:#0369a1;">🛡️ 存股穩健</span>
+            <span>利基型網通 / 高息防禦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 第四章：3 分鐘股票健康檢查器 -->
+    <section id="health" class="health-checker">
+      <div class="section-header">
+        <div class="section-tag">QUICK HEALTH CHECK</div>
+        <h2 class="section-title">🩺 3 分鐘股票健康檢查小工具</h2>
+        <p class="section-desc">
+          買進任何一檔電腦股前，花 1 分鐘勾選這 6 個「白話體質題」，自動幫你判斷是優質白馬還是危險地雷：
+        </p>
+      </div>
+
+      <div class="checker-grid">
+        <label class="check-item">
+          <input type="checkbox" id="h1" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>1. 公司有真金白銀賺錢嗎？</h4>
+            <p>最新一季或全年每股盈餘 (EPS) 為正數，非虧損狀態。</p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="h2" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>2. 有真正的現金流入帳嗎？</h4>
+            <p>營業活動現金流為正數，表示不是只記帳在紙上的虛胖獲利。</p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="h3" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>3. 產品利潤有沒有在提升？</h4>
+            <p>最近一期的「毛利率」比去年同期高（代表技術升級或有定價權）。</p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="h4" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>4. 公司有沒有過度借債？</h4>
+            <p>長期負債沒有比去年暴增，負債比率維持在健康安全範圍內。</p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="h5" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>5. 短期週轉資金充裕嗎？</h4>
+            <p>流動資產大於流動負債（流動比率 > 100%），手頭隨時有週轉金。</p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="h6" onchange="runHealthCheck()">
+          <div class="check-text">
+            <h4>6. 存貨沒有堆積賣不掉？</h4>
+            <p>存貨週轉天數正常或縮短，沒有出現客戶砍單導致的庫存塞車。</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="score-banner">
+        <div>
+          <div class="score-display">目前健康得分：<span id="health-score" style="color:var(--blue-primary);">0</span> / 6 分</div>
+          <div class="score-verdict" id="health-verdict">請勾選上方條件進行檢測</div>
+        </div>
+        <button class="btn-main" onclick="resetHealthCheck()" style="padding: 9px 18px; font-size: 0.9rem;">重設勾選</button>
+      </div>
+    </section>
+
+
+    <!-- 第五章：定期定額與風險控制試算機 -->
+    <section id="calc" class="calc-container">
+      <div class="section-header">
+        <div class="section-tag">PORTFOLIO & RISK CALCULATOR</div>
+        <h2 class="section-title">🧮 定期定額與風控停損試算機</h2>
+        <p class="section-desc">養成有紀律的投資習慣！計算你的每月預計投入成果，並精準控制潛在風險：</p>
+      </div>
+
+      <div class="calc-layout">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label>每月定期定額投入金額 (新台幣)：</label>
+            <input type="number" id="calc-monthly" value="10000" step="1000" oninput="runCalculator()">
+          </div>
+          <div class="input-group">
+            <label>預計投資期間 (年數)：</label>
+            <select id="calc-years" onchange="runCalculator()">
+              <option value="1">1 年 (短線衝刺)</option>
+              <option value="3" selected>3 年 (一個景氣循環)</option>
+              <option value="5">5 年 (中長線核心)</option>
+              <option value="10">10 年 (長期財富滾動)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>預期年化報酬率 (%)：</label>
+            <input type="number" id="calc-rate" value="10" step="1" oninput="runCalculator()">
+          </div>
+          <div class="input-group">
+            <label>單筆交易嚴格停損趴數 (%)：</label>
+            <input type="number" id="calc-stop" value="8" step="1" oninput="runCalculator()">
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <h4 style="color: var(--blue-navy); margin-bottom: 14px; font-size: 1.1rem;">📊 試算結果預估</h4>
+          <div class="calc-row">
+            <span>累計總投入本金：</span>
+            <span id="res-principal" style="font-family: var(--font-mono); font-weight: 600;">$360,000</span>
+          </div>
+          <div class="calc-row">
+            <span>預期複利資產終值：</span>
+            <span id="res-future" style="font-family: var(--font-mono); font-weight: 600; color: #0284c7;">$421,438</span>
+          </div>
+          <div class="calc-row">
+            <span>預期創造獲利：</span>
+            <span id="res-profit" style="font-family: var(--font-mono); font-weight: 600; color: #059669;">+$61,438</span>
+          </div>
+          <div class="calc-row">
+            <span>單筆最大風控停損金額：</span>
+            <span id="res-risk" style="font-family: var(--font-mono); color: var(--accent-red);">$800 / 每萬</span>
+          </div>
+          <div class="calc-row">
+            <span>💡 專家建議操作：</span>
+            <span id="res-advice" style="font-size: 0.95rem;">分批紀律買進，嚴格執行 8% 停損</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 第六章：學術文獻權威背書 (Scientific Backing) -->
+    <section id="science" class="citations-section">
+      <div class="section-header">
+        <div class="section-tag">ACADEMIC FOUNDATION & SCIENTIFIC BACKING</div>
+        <h2 class="section-title">為什麼這些方法管用？國際頂尖學術文獻佐證</h2>
+        <p class="section-desc">
+          本站提出的投資邏輯不是憑感覺或傳聞，而是借鑑諾貝爾獎級金融學者於頂尖學術期刊發表的實證定理，給您最踏實的依據：
+        </p>
+      </div>
+
+      <div class="citation-list">
+        <!-- 文獻 1 -->
+        <div class="citation-card">
+          <div class="citation-author">Piotroski, J. D. (2000)</div>
+          <div class="citation-journal">Journal of Accounting Research</div>
+          <div class="citation-takeaway">
+            <strong>【基本面檢驗定理】</strong>：提出 F-Score 檢驗體系，證實利用會計基本面剔除財務惡化的公司，能消除 70% 的科技雷股，並在低估族群中取得長期顯著超額報酬。
           </div>
         </div>
 
         <!-- 文獻 2 -->
-        <div class="paper-card">
-          <div class="paper-meta">
-            <div>
-              <div class="paper-authors">Novy-Marx, Robert</div>
-              <div class="paper-journal">Journal of Financial Economics, Vol. 108(1), pp. 1-28.</div>
-              <span class="paper-year">JFE 2013</span>
-            </div>
-            <div class="paper-role">毛利品質溢價因子</div>
-          </div>
-          <div class="paper-content">
-            <h4>The Other Side of Value: The Gross Profitability Premium</h4>
-            <p>
-              諾維·馬克思在 JFE 發表震撼學界的論文，證明以「營業毛利 / 總資產 (Gross Profitability)」衡量的獲利能力，對未來股票報酬具備與價值因子（Book-to-Market）同等強大但近乎負相關的預測力。高毛利公司通常具備技術專利或供應鏈定價權，能在激烈的通膨與硬體降價壓力中維持高利潤。
-            </p>
-            <div class="paper-quote">
-              策略應用：電腦週邊類股毛利率必須高於產業中位數（伺服器散熱/機構件 > 20%，工業電腦 > 30%）。
-            </div>
+        <div class="citation-card">
+          <div class="citation-author">Novy-Marx, R. (2013)</div>
+          <div class="citation-journal">Journal of Financial Economics</div>
+          <div class="citation-takeaway">
+            <strong>【毛利溢價定理】</strong>：芝加哥大學教授實證，毛利率高、毛利資產比（GP/A）強勁的硬體製造商具備強大的定價溢價，長期股價表現顯著勝過低毛利同業。
           </div>
         </div>
 
         <!-- 文獻 3 -->
-        <div class="paper-card">
-          <div class="paper-meta">
-            <div>
-              <div class="paper-authors">Fama, E. F., & French, K. R.</div>
-              <div class="paper-journal">Journal of Financial Economics, Vol. 116(1), pp. 1-22.</div>
-              <span class="paper-year">JFE 2015</span>
-            </div>
-            <div class="paper-role">多因子資產定價模型</div>
-          </div>
-          <div class="paper-content">
-            <h4>A Five-Factor Asset Pricing Model (五因子資產定價模型)</h4>
-            <p>
-              諾貝爾經濟學獎得主尤金·法瑪與肯尼斯·弗倫奇在三因子基礎上，正式加入「獲利能力因子 (RMW)」與「投資風格因子 (CMA)」。其核心實證揭示：在硬體製造產業中，資本支出溫和、折舊負擔可控且獲利穩健（保守投資策略）的公司，其風險調整後報酬遠勝過激進無序擴產的競爭者。
-            </p>
-            <div class="paper-quote">
-              策略應用：結合 P/B 估值河流圖（HML 因子）與保守資本支出指標（CMA 因子），避免景氣高峰過度建廠。
-            </div>
+        <div class="citation-card">
+          <div class="citation-author">Fama, E. F. & French, K. R. (2015)</div>
+          <div class="citation-journal">Journal of Financial Economics</div>
+          <div class="citation-takeaway">
+            <strong>【五因子資產定價模型】</strong>：諾貝爾獎得主團隊證實，獲利能力穩健（RMW）且資本投資節制有效率（CMA）的企業，長期能帶來超越大盤的風險調整後收益。
           </div>
         </div>
 
         <!-- 文獻 4 -->
-        <div class="paper-card">
-          <div class="paper-meta">
-            <div>
-              <div class="paper-authors">Jegadeesh, N., & Titman, S.</div>
-              <div class="paper-journal">The Journal of Finance, Vol. 48(1), pp. 65-91.</div>
-              <span class="paper-year">JF 1993</span>
-            </div>
-            <div class="paper-role">動能效應與趨勢追蹤</div>
+        <div class="citation-card">
+          <div class="citation-author">Jegadeesh, N. & Titman, S. (1993)</div>
+          <div class="citation-journal">The Journal of Finance</div>
+          <div class="citation-takeaway">
+            <strong>【價格動能效應定理】</strong>：實證確立過去 3~12 個月表現強勢的股票具備顯著延續性，為 AI 伺服器與水冷散熱等領先飆股的「順勢動能策略」提供學術基石。
           </div>
-          <div class="paper-content">
-            <h4>Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency</h4>
-            <p>
-              財務學界最具里程碑意義的動能論文。實證表明，過去 3 至 12 個月表現最佳的股票（贏家組合），在未來 3 至 12 個月內將持續展現統計顯著的延續性動能。在台灣電子產業中，價格動能往往伴隨著「月營收雙位數年增」與「機構法人連續佈局」。
-            </p>
-            <div class="paper-quote">
-              策略應用：近 3 個月累計營收 YoY > 10% 且股價站穩 60 日均線（季線），捕捉 AI 規格轉換拉貨潮。
-            </div>
-          </div>
-        </div>
-
-        <!-- 文獻 5 -->
-        <div class="paper-card">
-          <div class="paper-meta">
-            <div>
-              <div class="paper-authors">翁麗雪 (2021) / 吳欽杉等 (2002)</div>
-              <div class="paper-journal">台灣博碩士論文知識庫 / 證券市場發展季刊</div>
-              <span class="paper-year">TAIWAN EMPIRICAL</span>
-            </div>
-            <div class="paper-role">台灣市場本土實證</div>
-          </div>
-          <div class="paper-content">
-            <h4>以 F-Score 結合 Fama-French 模型在台灣電子與科技硬體類股之超額報酬驗證</h4>
-            <p>
-              國內多項碩博士與學術專案針對台灣上市櫃電子類股（包含電腦週邊設備業）進行跨越 15 年的回測。實證指出：在台灣中小型硬體供應鏈中，高 F-Score 投資組合每年能跑贏大盤 12% 以上；若疊加「月營收動能」與「本益比評價濾網」，更可大幅平滑 2008 及 2022 年半導體庫存調整時期的下行回撤。
-            </p>
-            <div class="paper-quote">
-              策略應用：印證 F-Score 與動能因子在台灣電腦週邊類股的高適用性與超額 Alpha 價值。
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 區塊三：四步驟量化投資策略架構 -->
-    <section id="framework" class="section">
-      <div class="section-header">
-        <div class="section-kicker">METHODOLOGY FRAMEWORK</div>
-        <h2 class="section-title">四維度實戰選股策略流程</h2>
-        <p class="section-subtitle">
-          從台股 130 餘檔電腦及週邊設備族群中，透過層層量化濾網，精準收斂至 5~10 檔兼具防禦與成長的投資組合。
-        </p>
-      </div>
-
-      <div class="framework-grid">
-        <div class="step-card">
-          <div class="step-badge">1</div>
-          <h3 class="step-name">財務體質健檢</h3>
-          <div class="step-source">PIOTROSKI F-SCORE</div>
-          <ul class="step-rules">
-            <li>F-Score 總分需 ≥ 7 分</li>
-            <li>近四季營業現金流 (CFO) > 0</li>
-            <li>營業現金流大於稅後淨利 (高盈餘品質)</li>
-            <li>剔除有短期流動性與債務違約疑慮者</li>
-          </ul>
-        </div>
-
-        <div class="step-card">
-          <div class="step-badge">2</div>
-          <h3 class="step-name">品質與毛利溢價</h3>
-          <div class="step-source">NOVY-MARX QUALITY</div>
-          <ul class="step-rules">
-            <li>毛利率 > 族群中位數 (一般門檻 > 15%)</li>
-            <li>近兩季毛利率呈現季增或年增改善</li>
-            <li>毛利率/總資產比率位於同業前 35%</li>
-            <li>鎖定水冷散熱、伺服器管理、工控利基</li>
-          </ul>
-        </div>
-
-        <div class="step-card">
-          <div class="step-badge">3</div>
-          <h3 class="step-name">估值合理度檢定</h3>
-          <div class="step-source">FAMA-FRENCH VALUE</div>
-          <ul class="step-rules">
-            <li>預估本益比 (Forward P/E) < 22 倍</li>
-            <li>股價淨值比 (P/B) 位於歷史河流圖中下緣</li>
-            <li>股東權益報酬率 (ROE) > 12%</li>
-            <li>具備殖利率保護機制 (近 3 年配息率 > 60%)</li>
-          </ul>
-        </div>
-
-        <div class="step-card">
-          <div class="step-badge">4</div>
-          <h3 class="step-name">營收動能與催化劑</h3>
-          <div class="step-source">JEGADEESH MOMENTUM</div>
-          <ul class="step-rules">
-            <li>近 3 個月累計營收 YoY 正成長 > 10%</li>
-            <li>股價位於 20 日 (月線) 與 60 日 (季線) 之上</li>
-            <li>外資與投信近 20 日呈現合力淨買超</li>
-            <li>新一代 AI 晶片或平台認證通過利多</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 區塊四：互動式 F-Score 檢測計算器 -->
-    <section id="interactive" class="section">
-      <div class="section-header">
-        <div class="section-kicker">INTERACTIVE TOOL</div>
-        <h2 class="section-title">Piotroski F-Score 實戰健檢計算器</h2>
-        <p class="section-subtitle">
-          挑選任何一檔電腦週邊類股（例如廣達、奇鋐或研華），逐一勾選最新財報數據，系統將即時計算評等。
-        </p>
-      </div>
-
-      <div class="interactive-box">
-        <div class="fscore-checklist">
-          <div class="checklist-title">
-            <span>檢驗指標清單（共 9 項）</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--blue-primary);" id="checked-count">已符合 7/9 項</span>
-          </div>
-
-          <!-- 獲利能力組 -->
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">1. 資產報酬率 (ROA) > 0</span>
-              <span class="item-sub">獲利維度：公司本期有實質賺錢而非帳面虧損</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">2. 營業活動現金流量 (CFO) > 0</span>
-              <span class="item-sub">獲利維度：營業本業實質流入真金白銀</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">3. ROA 較前一年提升 (ΔROA > 0)</span>
-              <span class="item-sub">獲利維度：資產獲利效率處於上升週期</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">4. 營業現金流 > 稅後淨利 (CFO > Net Income)</span>
-              <span class="item-sub">盈餘品質：防範硬體業虛增應收帳款之做帳灌水</span>
-            </div>
-          </label>
-
-          <!-- 槓桿與流動性組 -->
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">5. 長期負債比率較前一年下降</span>
-              <span class="item-sub">槓桿維度：降低金融借款槓桿，提升財務抗風險力</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" onchange="updateFScore()">
-            <div>
-              <span class="item-text">6. 流動比率 (Current Ratio) 較前一年上升</span>
-              <span class="item-sub">流動性：短期償債能力提升，防範存貨與週轉危機</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">7. 本年度未發行新股稀釋權益 (No Dilution)</span>
-              <span class="item-sub">槓桿維度：未向股東伸手印股票換鈔票</span>
-            </div>
-          </label>
-
-          <!-- 營運效率組 -->
-          <label class="checklist-item">
-            <input type="checkbox" checked onchange="updateFScore()">
-            <div>
-              <span class="item-text">8. 毛利率 (Gross Margin) 較前一年提升</span>
-              <span class="item-sub">營運效率：具備產品升級或轉型高附加價值跡象</span>
-            </div>
-          </label>
-
-          <label class="checklist-item">
-            <input type="checkbox" onchange="updateFScore()">
-            <div>
-              <span class="item-text">9. 資產週轉率 (Asset Turnover) 較前一年提升</span>
-              <span class="item-sub">營運效率：每一元廠房設備產出之營業額增加</span>
-            </div>
-          </label>
-        </div>
-
-        <div class="score-board">
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #93c5fd; letter-spacing: 1px;">PIOTROSKI SCORE</div>
-            <div class="score-circle">
-              <span class="score-num" id="score-display">7</span>
-              <span class="score-total">/ 9 分</span>
-            </div>
-            <div class="score-status" id="status-display">🌟 優質體質標的 (Pass)</div>
-          </div>
-          <div class="score-recommendation" id="recommendation-display">
-            符合 7 分以上高門檻！具備極佳的現金流與資產運營韌性，在電腦週邊景氣循環中能抵抗庫存降價衝擊，可列入核心選股池進行估值與動能評估。
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 區塊五：台股電腦及週邊類股代表範例庫 -->
-    <section id="screener" class="section">
-      <div class="section-header">
-        <div class="section-kicker">CASE EXAMPLES & SCREENER</div>
-        <h2 class="section-title">代表標的庫與量化指標對照</h2>
-        <p class="section-subtitle">
-          根據文獻標準檢驗台灣代表性電腦及週邊設備個股之基本面特徵（示意範例）：
-        </p>
-      </div>
-
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>股票代號 / 名稱</th>
-              <th>次產業細分領域</th>
-              <th>毛利率 (Gross Margin)</th>
-              <th>F-Score 評分</th>
-              <th>近3月營收動能</th>
-              <th>本益比位階</th>
-              <th>策略定位分類</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>2382 廣達</strong></td>
-              <td>AI 伺服器 / 白牌代工龍頭</td>
-              <td>7.8% (代工相對高)</td>
-              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
-              <td>+42.5% YoY</td>
-              <td>中段水位 (18x)</td>
-              <td><span class="tag-badge tag-blue">核心大型動能股</span></td>
-            </tr>
-            <tr>
-              <td><strong>3017 奇鋐</strong></td>
-              <td>伺服器水冷與散熱模組</td>
-              <td>23.4% (高毛利)</td>
-              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
-              <td>+38.1% YoY</td>
-              <td>高評價溢價 (24x)</td>
-              <td><span class="tag-badge tag-blue">Novy-Marx 品質成長股</span></td>
-            </tr>
-            <tr>
-              <td><strong>2395 研華</strong></td>
-              <td>工業電腦 (IPC) / 物聯網</td>
-              <td>39.8% (極高毛利)</td>
-              <td><span class="tag-badge tag-green">7 分 (穩健)</span></td>
-              <td>+6.2% YoY</td>
-              <td>歷史低檔 (21x)</td>
-              <td><span class="tag-badge tag-amber">防禦型價值品質股</span></td>
-            </tr>
-            <tr>
-              <td><strong>3231 緯創</strong></td>
-              <td>AI 伺服器主板 / 運算模組</td>
-              <td>7.9% (轉型升級)</td>
-              <td><span class="tag-badge tag-green">7 分 (達標)</span></td>
-              <td>+28.4% YoY</td>
-              <td>合理估值 (15x)</td>
-              <td><span class="tag-badge tag-blue">景氣轉折動能股</span></td>
-            </tr>
-            <tr>
-              <td><strong>3324 雙鴻</strong></td>
-              <td>高階散熱與液冷系統</td>
-              <td>24.6% (高毛利)</td>
-              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
-              <td>+31.0% YoY</td>
-              <td>成長溢價 (25x)</td>
-              <td><span class="tag-badge tag-blue">規格升級受惠股</span></td>
-            </tr>
-            <tr>
-              <td><strong>2376 技嘉</strong></td>
-              <td>伺服器 / 主機板 / 顯卡</td>
-              <td>11.2% (受零組件波動)</td>
-              <td><span class="tag-badge tag-amber">6 分 (觀察)</span></td>
-              <td>+45.2% YoY</td>
-              <td>中低水位 (14x)</td>
-              <td><span class="tag-badge tag-amber">高動能但需監控庫存</span></td>
-            </tr>
-            <tr>
-              <td><strong>2353 宏碁</strong></td>
-              <td>個人電腦品牌 / 代理通路</td>
-              <td>10.6% (品牌成熟)</td>
-              <td><span class="tag-badge tag-amber">5 分 (中性)</span></td>
-              <td>+3.8% YoY</td>
-              <td>中性估值 (16x)</td>
-              <td><span class="tag-badge tag-blue">高股息防禦標的</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 區塊六：投資風險與 SOP 紀律 -->
-    <section id="sop" class="section">
-      <div class="section-header">
-        <div class="section-kicker">EXECUTION & RISK DISCIPLINE</div>
-        <h2 class="section-title">量化投資紀律與風險管理 SOP</h2>
-        <p class="section-subtitle">
-          學術模型的長期超額回報依賴於「嚴格執行」與「停損防線」，絕不可受市場短期情緒影響。
-        </p>
-      </div>
-
-      <div class="sop-grid">
-        <div class="sop-card">
-          <div class="sop-title">
-            <span class="sop-icon">📅</span>
-            <span>季度再平衡紀律</span>
-          </div>
-          <p class="sop-desc">
-            於每季財報申報截止後（3/31、5/15、8/14、11/14）的 5 個交易日內，重新執行全族群 F-Score 與毛利率計算。若原有持股 F-Score 降至 5 分以下或毛利率連續兩季失速，無條件調出並換入新晉標的。
-          </p>
-        </div>
-
-        <div class="sop-card">
-          <div class="sop-title">
-            <span class="sop-icon">🛡️</span>
-            <span>持股上限與集中度</span>
-          </div>
-          <p class="sop-desc">
-            投資組合鎖定 6~10 檔電腦週邊設備股票，單一個股資金上限不得超過整體部位的 18%。即便極度看好 AI 伺服器代工，也必須分散至散熱、電源及 IPC 零組件，降低單一組裝大廠遭砍單之系統性衝擊。
-          </p>
-        </div>
-
-        <div class="sop-card">
-          <div class="sop-title">
-            <span class="sop-icon">⚠️</span>
-            <span>存貨天數警報停損</span>
-          </div>
-          <p class="sop-desc">
-            硬體製造業的獲利殺手通常是存貨。當季報顯示「存貨週轉天數」較前一年同期暴增超過 25%，且營收年增率轉負時，即啟動防禦性停損，不必等待股價破線跌破年線。
-          </p>
         </div>
       </div>
     </section>
@@ -1255,59 +1504,189 @@
 
   <!-- 頁尾 -->
   <footer>
-    <div class="footer-container">
+    <div class="footer-content">
       <div>
-        <div class="footer-brand">電腦及週邊設備類股學術量化投資策略網</div>
-        <div style="font-size: 0.8rem; margin-top: 6px; opacity: 0.8;">
-          基於 Piotroski (2000)、Fama-French (1993, 2015)、Novy-Marx (2013) 及 Jegadeesh-Titman (1993)
-        </div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #fff;">台股電腦及週邊設備類股實戰投資網</div>
+        <div style="font-size: 0.82rem; margin-top: 4px;">結合台灣硬體供應鏈特色 · 3大白話投資方法 · 頂尖國際文獻科學佐證</div>
       </div>
       <div class="footer-links">
-        <a href="#framework">核心理論框架</a>
+        <a href="#methods">三大實戰法</a>
+        <a href="#quiz">推薦測驗</a>
+        <a href="#stocks">精選 20+ 個股</a>
+        <a href="#health">健康檢查</a>
         <a href="https://github.com/itachi923/computer-peripherals-stock-strategy" target="_blank" rel="noopener">GitHub 專案倉庫</a>
-        <a href="#literature">引用文獻列表</a>
       </div>
     </div>
-    <div style="max-width: 1200px; margin: 24px auto 0 auto; text-align: center; font-size: 0.76rem; opacity: 0.5;">
-      免責聲明：本網站內容為學術文獻回顧與量化投資策略教學研究，不構成任何證券之買賣推薦或投資諮詢建議。投資人應獨立評估風險並自負盈虧。
+    <div class="disclaimer">
+      免責聲明：本網站內容係彙整學術文獻與金融公開資訊進行之策略教學與工具展示，不構成任何證券買賣之邀約或投資建議。市場有風險，投資人應獨立判斷並自負盈虧。
     </div>
   </footer>
 
+  <!-- 互動腳本 JavaScript -->
   <script>
-    function updateFScore() {
-      const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-      let score = 0;
-      checkboxes.forEach(cb => {
-        if (cb.checked) score++;
-      });
+    // 測驗狀態與選項
+    let quizState = { 1: 'safe', 2: 'safe', 3: 'safe' };
 
-      document.getElementById('score-display').innerText = score;
-      document.getElementById('checked-count').innerText = `已符合 ${score}/9 項`;
+    function selectQuiz(qNum, elem, val) {
+      quizState[qNum] = val;
+      const parent = document.getElementById('quiz-q' + qNum);
+      parent.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('active'));
+      elem.classList.add('active');
+    }
 
-      const statusEl = document.getElementById('status-display');
-      const recEl = document.getElementById('recommendation-display');
+    function calcQuizResult() {
+      const counts = { safe: 0, growth: 0, value: 0 };
+      counts[quizState[1]]++;
+      counts[quizState[2]]++;
+      counts[quizState[3]]++;
 
-      if (score >= 8) {
-        statusEl.innerText = "🏆 頂級績優標的 (Elite)";
-        statusEl.style.color = "#38bdf8";
-        recEl.innerText = "9 項中取得 8~9 分極高分！具備最頂級的現金流品質、資產運用效率與毛利競爭力。在台股電腦週邊族群中屬於稀缺的高品質核心資產，可積極配置。";
-      } else if (score >= 6) {
-        statusEl.innerText = "🌟 優質體質標的 (Pass)";
-        statusEl.style.color = "#4ade80";
-        recEl.innerText = "符合 6~7 分合格門檻！具備良好的財務安全邊際與現金流，能有效抵禦庫存循環波動，可進一步配合本益比估值與營收動能進行選股決策。";
-      } else if (score >= 4) {
-        statusEl.innerText = "⚠️ 中性觀察標的 (Neutral)";
-        statusEl.style.color = "#fbbf24";
-        recEl.innerText = "得分介於 4~5 分，顯示公司在毛利率提升、長債降低或現金流轉化中存在部分弱點。建議僅在估值極度低估或具備強大催化劑時少量佈局，需嚴設停損。";
+      const resBox = document.getElementById('quiz-result');
+      const resTitle = document.getElementById('result-title');
+      const resDesc = document.getElementById('result-desc');
+      const resRec = document.getElementById('result-recommendation');
+
+      let winner = 'safe';
+      if (counts.growth >= 2) winner = 'growth';
+      else if (counts.value >= 2) winner = 'value';
+      else if (counts.growth === 1 && counts.value === 1 && counts.safe === 1) winner = 'growth';
+
+      if (winner === 'safe') {
+        resTitle.innerHTML = '🛡️ 你的命定投資策略：【護城河高息存股法】';
+        resDesc.innerHTML = '你的性格穩健，重視資本安全性與穩定現金流，不喜歡被盤面劇烈波動影響日常生活。最適合投資客製化程度高、利潤率穩定、年年大方配息的工業電腦 (IPC) 與高股息電腦龍頭！';
+        resRec.innerHTML = '<strong>🎯 建議配置組合：</strong><br>• 70% 核心資產：研華 (2395)、樺漢 (6414)、光寶科 (2301)<br>• 30% 成長衛星：廣達 (2382)<br><em>💡 操作建議：逢殖利率高於 4.5% 時定期定額分批買進，長線持有領息。</em>';
+      } else if (winner === 'growth') {
+        resTitle.innerHTML = '🚀 你的命定投資策略：【AI 動能爆發順勢法】';
+        resDesc.innerHTML = '你具備較佳的風險承受能力，對新科技趨勢敏銳，追求超越大盤的資產爆發力！目前全球 AI 伺服器與散熱規格大升級，你最適合鎖定具有「技術定價權」與「營收月增年增」的純度領頭羊。';
+        resRec.innerHTML = '<strong>🎯 建議配置組合：</strong><br>• 60% 趨勢主攻：廣達 (2382)、奇鋐 (3017)、川湖 (2059)<br>• 40% 爆發衛星：雙鴻 (3324)、緯創 (3231)<br><em>💡 操作建議：站上月線進場順勢操作，嚴格設定 8% 停損紀律，不隨意猜頂。</em>';
       } else {
-        statusEl.innerText = "🚨 價值陷阱警戒 (Value Trap)";
-        statusEl.style.color = "#f87171";
-        recEl.innerText = "得分低於 4 分！即便本益比或股價淨值比看似便宜，但現金流與營運效率已顯著惡化，極易落入製造業的「低毛利 + 存貨跌價」價值陷阱，強烈建議避開。";
+        resTitle.innerHTML = '🔄 你的命定投資策略：【循環底部逆向反轉法】';
+        resDesc.innerHTML = '你是一位極具耐心的價值型獵人，擅長在市場悲觀、無人問津時尋找被錯殺的實力老牌巨頭，等待庫存去化結束或新世代換機潮帶來的強勁反轉行情！';
+        resRec.innerHTML = '<strong>🎯 建議配置組合：</strong><br>• 50% 品牌與代工老將：仁寶 (2324)、英業達 (2356)<br>• 50% 換機潮受惠：華碩 (2357)、微星 (2377)<br><em>💡 操作建議：在股價淨值比歷史底部時分批金字塔式布局，報酬率達到 20%~30% 分批獲利了結。</em>';
+      }
+
+      resBox.style.display = 'block';
+      resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // 股票篩選與搜尋
+    function filterStocks(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.stock-card');
+      const searchVal = document.getElementById('stock-search').value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const name = card.getAttribute('data-name').toLowerCase();
+        const matchesCat = (category === 'all' || cat === category);
+        const matchesSearch = (!searchVal || name.includes(searchVal));
+
+        if (matchesCat && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchStocks() {
+      const activeTab = document.querySelector('.filter-tab.active');
+      const category = activeTab ? (activeTab.textContent.includes('全部') ? 'all' : 
+        (activeTab.textContent.includes('伺服器') ? 'server' :
+        (activeTab.textContent.includes('散熱') ? 'cooling' :
+        (activeTab.textContent.includes('工業') ? 'ipc' : 'brand')))) : 'all';
+
+      const cards = document.querySelectorAll('.stock-card');
+      const searchVal = document.getElementById('stock-search').value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const name = card.getAttribute('data-name').toLowerCase();
+        const matchesCat = (category === 'all' || cat === category);
+        const matchesSearch = (!searchVal || name.includes(searchVal));
+
+        if (matchesCat && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 3分鐘健康檢查器
+    function runHealthCheck() {
+      let score = 0;
+      for (let i = 1; i <= 6; i++) {
+        if (document.getElementById('h' + i).checked) score++;
+      }
+      document.getElementById('health-score').textContent = score;
+
+      const verdict = document.getElementById('health-verdict');
+      if (score === 6) {
+        verdict.innerHTML = '🌟 體質極為優秀（滿分白馬股）：財務強韌、獲利真金白銀，適合納入核心自選清單！';
+        verdict.style.color = '#059669';
+      } else if (score >= 4) {
+        verdict.innerHTML = '👍 體質健康良好（可持續觀察）：多數財務指標過關，具備投資價值，可留意其動能與產業地位。';
+        verdict.style.color = '#0284c7';
+      } else if (score >= 2) {
+        verdict.innerHTML = '⚠️ 體質中等帶風險：部分項目有瑕疵（如負債增加或利潤下滑），建議縮小持股部位並設停損。';
+        verdict.style.color = '#d97706';
+      } else {
+        verdict.innerHTML = '❌ 風險警示（可能為價值陷阱）：財務基本面偏弱或虧損，切勿盲目接刀摸底！';
+        verdict.style.color = '#dc2626';
       }
     }
 
-    // 初始化試算
-    updateFScore();
+    function resetHealthCheck() {
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('h' + i).checked = false;
+      }
+      runHealthCheck();
+      document.getElementById('health-verdict').innerHTML = '請勾選上方條件進行檢測';
+      document.getElementById('health-verdict').style.color = '#0369a1';
+    }
+
+    // 定期定額與風控試算
+    function runCalculator() {
+      const monthly = parseFloat(document.getElementById('calc-monthly').value) || 0;
+      const years = parseInt(document.getElementById('calc-years').value) || 3;
+      const annualRate = (parseFloat(document.getElementById('calc-rate').value) || 0) / 100;
+      const stopRate = (parseFloat(document.getElementById('calc-stop').value) || 0) / 100;
+
+      const months = years * 12;
+      const r = annualRate / 12;
+      const totalPrincipal = monthly * months;
+
+      let futureVal = 0;
+      if (r > 0) {
+        futureVal = monthly * ((Math.pow(1 + r, months) - 1) / r) * (1 + r);
+      } else {
+        futureVal = totalPrincipal;
+      }
+
+      const profit = futureVal - totalPrincipal;
+      const riskPer10k = 10000 * stopRate;
+
+      document.getElementById('res-principal').textContent = '$' + Math.round(totalPrincipal).toLocaleString();
+      document.getElementById('res-future').textContent = '$' + Math.round(futureVal).toLocaleString();
+      document.getElementById('res-profit').textContent = (profit >= 0 ? '+' : '') + '$' + Math.round(profit).toLocaleString();
+      document.getElementById('res-risk').textContent = '$' + Math.round(riskPer10k).toLocaleString() + ' (每萬本金)';
+
+      const adviceElem = document.getElementById('res-advice');
+      if (years >= 5) {
+        adviceElem.textContent = '長線定期定額勝率高達 85% 以上，逢大跌勇敢加碼。';
+      } else if (stopRate <= 0.08) {
+        adviceElem.textContent = '停損點設定得宜，兼顧獲利潛力與下檔保護。';
+      } else {
+        adviceElem.textContent = '短線波動較大，建議適度分散於 3~4 檔不同次族群股票。';
+      }
+    }
+
+    // 初始化執行試算
+    document.addEventListener('DOMContentLoaded', () => {
+      runCalculator();
+    });
   </script>
 </body>
 </html>
