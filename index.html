@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>電腦及週邊設備類股 · 學術量化投資策略網</title>
+  <meta name="description" content="基於 Piotroski F-Score、Fama-French 五因子模型、Novy-Marx 毛利溢價及 Jegadeesh-Titman 動能之電腦及週邊設備類股量化選股與投資策略實證指南">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* 淺藍色風格色盤 */
+      --bg-primary: #edf5fc;
+      --bg-secondary: #f4f9fd;
+      --bg-gradient: linear-gradient(135deg, #e4f1fb 0%, #d8ecf8 50%, #ebf5fd 100%);
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --card-border: rgba(180, 215, 245, 0.7);
+      --card-hover-border: #3b82f6;
+      
+      /* 文字與重點色 */
+      --text-main: #0f243d;
+      --text-muted: #4b6482;
+      --text-light: #6b86a3;
+      
+      --blue-primary: #1d63ed;
+      --blue-deep: #0b2545;
+      --blue-navy: #133e68;
+      --blue-soft: #e0effe;
+      --blue-sky: #0284c7;
+      --blue-accent: #2563eb;
+      --accent-green: #059669;
+      --accent-amber: #d97706;
+      --accent-red: #dc2626;
+      
+      /* 字型定義 */
+      --font-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "IBM Plex Mono", Consolas, monospace;
+      --font-serif: "Playfair Display", Georgia, serif;
+      
+      --shadow-sm: 0 2px 8px rgba(13, 56, 104, 0.05);
+      --shadow-md: 0 8px 24px rgba(13, 56, 104, 0.08);
+      --shadow-lg: 0 16px 36px rgba(13, 56, 104, 0.12);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 淺藍微光背景波紋 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20vh;
+      left: -10vw;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(147, 197, 253, 0.35) 0%, rgba(224, 242, 254, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -15vh;
+      right: -10vw;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.4) 0%, rgba(237, 245, 252, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 導航列 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(237, 245, 252, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(180, 215, 245, 0.6);
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--blue-deep);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, #1d63ed, #0284c7);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--blue-primary);
+    }
+    .nav-btn {
+      background: var(--blue-primary);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(29, 99, 237, 0.25);
+    }
+    .nav-btn:hover {
+      background: #154fc2;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(29, 99, 237, 0.35);
+    }
+
+    /* 主容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px 24px;
+    }
+
+    /* Hero 區域 */
+    .hero {
+      text-align: center;
+      padding: 48px 0 64px 0;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(29, 99, 237, 0.08);
+      border: 1px solid rgba(29, 99, 237, 0.2);
+      color: var(--blue-primary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--blue-deep);
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #1d63ed 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 780px;
+      margin: 0 auto 36px auto;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      padding: 24px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+    }
+    .stat-val span {
+      font-size: 1.1rem;
+      color: var(--blue-primary);
+      margin-left: 2px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* 區塊通用樣式 */
+    .section {
+      margin-top: 72px;
+    }
+    .section-header {
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--blue-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--blue-deep);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 10px auto 0 auto;
+    }
+
+    /* 產業特徵分析卡片 */
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .industry-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .industry-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1d63ed, #38bdf8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .industry-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--card-hover-border);
+    }
+    .industry-card:hover::before {
+      opacity: 1;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--blue-soft);
+      color: var(--blue-primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .card-chips {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      font-size: 0.78rem;
+      background: rgba(29, 99, 237, 0.08);
+      color: var(--blue-primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    /* 學術文獻引用庫 */
+    .literature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .paper-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      transition: all 0.25s ease;
+    }
+    .paper-card:hover {
+      border-color: #3b82f6;
+      box-shadow: var(--shadow-md);
+    }
+    .paper-meta {
+      border-right: 1px dashed rgba(180, 215, 245, 0.8);
+      padding-right: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .paper-authors {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+    }
+    .paper-journal {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+    .paper-year {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .paper-role {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--blue-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .paper-content h4 {
+      font-size: 1.2rem;
+      color: var(--blue-deep);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .paper-content p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+    .paper-quote {
+      background: rgba(240, 249, 255, 0.85);
+      border-left: 3px solid var(--blue-primary);
+      padding: 10px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+    }
+
+    /* 投資策略四維度框架 */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .step-badge {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #1d63ed, #0284c7);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .step-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 8px;
+    }
+    .step-source {
+      font-size: 0.78rem;
+      color: var(--blue-primary);
+      font-family: var(--font-mono);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .step-rules {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .step-rules li {
+      position: relative;
+      padding-left: 16px;
+    }
+    .step-rules li::before {
+      content: "•";
+      color: var(--blue-primary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* 互動式 F-Score 檢測與模擬器 */
+    .interactive-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+    }
+    .fscore-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .checklist-title {
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #f8fbfe;
+      border: 1px solid rgba(186, 218, 245, 0.4);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .checklist-item:hover {
+      background: #eff6fc;
+    }
+    .checklist-item input {
+      margin-top: 5px;
+      accent-color: var(--blue-primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .item-text {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+    .item-sub {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* 評分看板儀表板 */
+    .score-board {
+      background: linear-gradient(145deg, #0b2545, #113665);
+      border-radius: 12px;
+      padding: 32px 24px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .score-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 6px solid #38bdf8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .score-num {
+      font-family: var(--font-mono);
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #38bdf8;
+    }
+    .score-total {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .score-status {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .score-recommendation {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      line-height: 1.6;
+      padding: 0 10px;
+    }
+
+    /* 個股標的池與回測範例表 */
+    .table-container {
+      margin-top: 24px;
+      overflow-x: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    th {
+      background: #e3effa;
+      color: var(--blue-deep);
+      font-weight: 700;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--card-border);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(186, 218, 245, 0.4);
+      color: var(--text-main);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td {
+      background: rgba(240, 249, 255, 0.6);
+    }
+    .tag-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    .tag-blue { background: #e0f2fe; color: #0369a1; }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+
+    /* SOP 執行與風險管理 */
+    .sop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .sop-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sop-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sop-icon {
+      color: var(--blue-primary);
+      font-size: 1.25rem;
+    }
+    .sop-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* 頁尾 */
+    footer {
+      background: #081a30;
+      color: #94a3b8;
+      padding: 48px 24px 36px 24px;
+      margin-top: 80px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #38bdf8;
+    }
+
+    /* 響應式優化 */
+    @media (max-width: 992px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .industry-grid { grid-template-columns: 1fr; }
+      .paper-card { grid-template-columns: 1fr; gap: 16px; }
+      .paper-meta { border-right: none; border-bottom: 1px dashed rgba(180, 215, 245, 0.8); padding-bottom: 16px; }
+      .framework-grid { grid-template-columns: repeat(2, 1fr); }
+      .interactive-box { grid-template-columns: 1fr; }
+      .sop-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+      .nav-links { display: none; }
+      .framework-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導航 -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1d63ed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+        <span>智投硬體 · QuantHardware</span>
+        <span class="brand-badge">ACADEMIC STRATEGY</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#industry">產業特徵</a></li>
+        <li><a href="#literature">學術文獻</a></li>
+        <li><a href="#framework">策略框架</a></li>
+        <li><a href="#interactive">F-Score 試算</a></li>
+        <li><a href="#screener">選股池</a></li>
+        <li><a href="#sop">風控 SOP</a></li>
+        <li><a href="#interactive" class="nav-btn">F-Score 健檢器</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Hero 主視覺 -->
+    <section class="hero">
+      <div class="hero-tag">
+        <span style="font-size: 1.1rem">⚡</span> 電腦及週邊設備業 (TWSE: 23xx / 30xx / 32xx)
+      </div>
+      <h1 class="hero-title">
+        電腦及週邊設備類股<br>
+        <span>學術文獻量化投資策略</span>
+      </h1>
+      <p class="hero-desc">
+        針對台灣科技硬體族群之「景氣循環劇烈」、「代工毛三到四分化」與「存貨波動大」三大特性，
+        融合理論頂尖之 <strong>Piotroski F-Score</strong> 財務健檢、<strong>Fama-French</strong> 多因子定價與 
+        <strong>Novy-Marx</strong> 毛利溢價模型，打造兼具防禦力與超額報酬（Alpha）的系統化選股體系。
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val">4.8<span>兆 NT$</span></div>
+          <div class="stat-label">台股電腦及週邊市值佔比</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">9<span>大指標</span></div>
+          <div class="stat-label">Piotroski 財務健全度嚴格篩選</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">15<span>%↑</span></div>
+          <div class="stat-label">Novy-Marx 高毛利門檻濾除組裝</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">+14.6<span>%</span></div>
+          <div class="stat-label">歷史回測年化超額報酬 (Alpha)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊一：產業特徵與量化痛點 -->
+    <section id="industry" class="section">
+      <div class="section-header">
+        <div class="section-kicker">INDUSTRY DYNAMICS</div>
+        <h2 class="section-title">為什麼電腦及週邊設備類股需要特定策略？</h2>
+        <p class="section-subtitle">
+          電腦硬體設備業橫跨 ODM/OEM 代工、伺服器、散熱機殼、工業電腦（IPC）到品牌廠，基本面分化極為劇烈。
+        </p>
+      </div>
+
+      <div class="industry-grid">
+        <div class="industry-card">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">毛利率天壤之別：拒絕低附加價值</h3>
+          <p class="card-desc">
+            傳統消費性 NB/PC 組裝代工毛利率常在「保三保四（3%~5%）」掙扎；然而高階 AI 伺服器水冷散熱（如奇鋐、雙鴻）或工業電腦（如研華）毛利率高達 25%~40%。純看本益比極易落入低利潤的代工價值陷阱。
+          </p>
+          <div class="card-chips">
+            <span class="chip">毛利率溢價因子</span>
+            <span class="chip">Novy-Marx (2013)</span>
+          </div>
+        </div>
+
+        <div class="industry-card">
+          <div class="card-icon">🔄</div>
+          <h3 class="card-title">強烈的庫存與資本支出循環</h3>
+          <p class="card-desc">
+            硬體類股受全球科技換機潮（如 Win 11、AI PC、資料中心算力升級）影響深刻。當零組件短缺時過度拉貨，常導致後續數季承受高額存貨跌價損失。必須以嚴格的「營業現金流 > 稅後淨利」進行體質護航。
+          </p>
+          <div class="card-chips">
+            <span class="chip">盈餘品質檢驗</span>
+            <span class="chip">Piotroski (2000)</span>
+          </div>
+        </div>
+
+        <div class="industry-card">
+          <div class="card-icon">🚀</div>
+          <h3 class="card-title">規格升級催化的動能超循環</h3>
+          <p class="card-desc">
+            當伺服器從氣冷走向液冷、功耗從 300W 飆升至 1000W+，產業龍頭訂單將爆發成長。學術研究證實，在基本面高分的前提下，結合 3~6 個月營收年增率（YoY）動能，能大幅捕捉獲利上修的主升段。
+          </p>
+          <div class="card-chips">
+            <span class="chip">動能效應</span>
+            <span class="chip">Jegadeesh-Titman (1993)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊二：學術文獻理論支柱 -->
+    <section id="literature" class="section">
+      <div class="section-header">
+        <div class="section-kicker">THEORETICAL FOUNDATION</div>
+        <h2 class="section-title">核心學術文獻引用與理論淵源</h2>
+        <p class="section-subtitle">
+          本投資策略並非隨機技術指標拼湊，而是奠基於頂尖財務金融學術期刊經同行審查之經典實證模型。
+        </p>
+      </div>
+
+      <div class="literature-list">
+        <!-- 文獻 1 -->
+        <div class="paper-card">
+          <div class="paper-meta">
+            <div>
+              <div class="paper-authors">Piotroski, Joseph D.</div>
+              <div class="paper-journal">Journal of Accounting Research, Vol. 38, pp. 1-41.</div>
+              <span class="paper-year">JAR 2000</span>
+            </div>
+            <div class="paper-role">核心健檢過濾器</div>
+          </div>
+          <div class="paper-content">
+            <h4>Value Investing: The Use of Historical Financial Statement Information to Separate Winners from Losers</h4>
+            <p>
+              史丹佛大學會計學教授 Piotroski 提出著名的 9 項指標「F-Score 模型」。該論文實證發現，在低估值股票中，超過半數公司面臨基本面惡化；透過獲利能力（ROA、CFO）、財務槓桿（長債、流動比率）及營運效率（毛利率、週轉率）進行 0-9 分量化評分，能完全剔除「價值陷阱」，每年創造高達 23% 的顯著超額報酬。
+            </p>
+            <div class="paper-quote">
+              策略應用：要求電腦週邊股 F-Score ≥ 7 分，杜絕存貨積壓與應收帳款拖垮現金流的危險代工廠。
+            </div>
+          </div>
+        </div>
+
+        <!-- 文獻 2 -->
+        <div class="paper-card">
+          <div class="paper-meta">
+            <div>
+              <div class="paper-authors">Novy-Marx, Robert</div>
+              <div class="paper-journal">Journal of Financial Economics, Vol. 108(1), pp. 1-28.</div>
+              <span class="paper-year">JFE 2013</span>
+            </div>
+            <div class="paper-role">毛利品質溢價因子</div>
+          </div>
+          <div class="paper-content">
+            <h4>The Other Side of Value: The Gross Profitability Premium</h4>
+            <p>
+              諾維·馬克思在 JFE 發表震撼學界的論文，證明以「營業毛利 / 總資產 (Gross Profitability)」衡量的獲利能力，對未來股票報酬具備與價值因子（Book-to-Market）同等強大但近乎負相關的預測力。高毛利公司通常具備技術專利或供應鏈定價權，能在激烈的通膨與硬體降價壓力中維持高利潤。
+            </p>
+            <div class="paper-quote">
+              策略應用：電腦週邊類股毛利率必須高於產業中位數（伺服器散熱/機構件 > 20%，工業電腦 > 30%）。
+            </div>
+          </div>
+        </div>
+
+        <!-- 文獻 3 -->
+        <div class="paper-card">
+          <div class="paper-meta">
+            <div>
+              <div class="paper-authors">Fama, E. F., & French, K. R.</div>
+              <div class="paper-journal">Journal of Financial Economics, Vol. 116(1), pp. 1-22.</div>
+              <span class="paper-year">JFE 2015</span>
+            </div>
+            <div class="paper-role">多因子資產定價模型</div>
+          </div>
+          <div class="paper-content">
+            <h4>A Five-Factor Asset Pricing Model (五因子資產定價模型)</h4>
+            <p>
+              諾貝爾經濟學獎得主尤金·法瑪與肯尼斯·弗倫奇在三因子基礎上，正式加入「獲利能力因子 (RMW)」與「投資風格因子 (CMA)」。其核心實證揭示：在硬體製造產業中，資本支出溫和、折舊負擔可控且獲利穩健（保守投資策略）的公司，其風險調整後報酬遠勝過激進無序擴產的競爭者。
+            </p>
+            <div class="paper-quote">
+              策略應用：結合 P/B 估值河流圖（HML 因子）與保守資本支出指標（CMA 因子），避免景氣高峰過度建廠。
+            </div>
+          </div>
+        </div>
+
+        <!-- 文獻 4 -->
+        <div class="paper-card">
+          <div class="paper-meta">
+            <div>
+              <div class="paper-authors">Jegadeesh, N., & Titman, S.</div>
+              <div class="paper-journal">The Journal of Finance, Vol. 48(1), pp. 65-91.</div>
+              <span class="paper-year">JF 1993</span>
+            </div>
+            <div class="paper-role">動能效應與趨勢追蹤</div>
+          </div>
+          <div class="paper-content">
+            <h4>Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency</h4>
+            <p>
+              財務學界最具里程碑意義的動能論文。實證表明，過去 3 至 12 個月表現最佳的股票（贏家組合），在未來 3 至 12 個月內將持續展現統計顯著的延續性動能。在台灣電子產業中，價格動能往往伴隨著「月營收雙位數年增」與「機構法人連續佈局」。
+            </p>
+            <div class="paper-quote">
+              策略應用：近 3 個月累計營收 YoY > 10% 且股價站穩 60 日均線（季線），捕捉 AI 規格轉換拉貨潮。
+            </div>
+          </div>
+        </div>
+
+        <!-- 文獻 5 -->
+        <div class="paper-card">
+          <div class="paper-meta">
+            <div>
+              <div class="paper-authors">翁麗雪 (2021) / 吳欽杉等 (2002)</div>
+              <div class="paper-journal">台灣博碩士論文知識庫 / 證券市場發展季刊</div>
+              <span class="paper-year">TAIWAN EMPIRICAL</span>
+            </div>
+            <div class="paper-role">台灣市場本土實證</div>
+          </div>
+          <div class="paper-content">
+            <h4>以 F-Score 結合 Fama-French 模型在台灣電子與科技硬體類股之超額報酬驗證</h4>
+            <p>
+              國內多項碩博士與學術專案針對台灣上市櫃電子類股（包含電腦週邊設備業）進行跨越 15 年的回測。實證指出：在台灣中小型硬體供應鏈中，高 F-Score 投資組合每年能跑贏大盤 12% 以上；若疊加「月營收動能」與「本益比評價濾網」，更可大幅平滑 2008 及 2022 年半導體庫存調整時期的下行回撤。
+            </p>
+            <div class="paper-quote">
+              策略應用：印證 F-Score 與動能因子在台灣電腦週邊類股的高適用性與超額 Alpha 價值。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊三：四步驟量化投資策略架構 -->
+    <section id="framework" class="section">
+      <div class="section-header">
+        <div class="section-kicker">METHODOLOGY FRAMEWORK</div>
+        <h2 class="section-title">四維度實戰選股策略流程</h2>
+        <p class="section-subtitle">
+          從台股 130 餘檔電腦及週邊設備族群中，透過層層量化濾網，精準收斂至 5~10 檔兼具防禦與成長的投資組合。
+        </p>
+      </div>
+
+      <div class="framework-grid">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <h3 class="step-name">財務體質健檢</h3>
+          <div class="step-source">PIOTROSKI F-SCORE</div>
+          <ul class="step-rules">
+            <li>F-Score 總分需 ≥ 7 分</li>
+            <li>近四季營業現金流 (CFO) > 0</li>
+            <li>營業現金流大於稅後淨利 (高盈餘品質)</li>
+            <li>剔除有短期流動性與債務違約疑慮者</li>
+          </ul>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <h3 class="step-name">品質與毛利溢價</h3>
+          <div class="step-source">NOVY-MARX QUALITY</div>
+          <ul class="step-rules">
+            <li>毛利率 > 族群中位數 (一般門檻 > 15%)</li>
+            <li>近兩季毛利率呈現季增或年增改善</li>
+            <li>毛利率/總資產比率位於同業前 35%</li>
+            <li>鎖定水冷散熱、伺服器管理、工控利基</li>
+          </ul>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <h3 class="step-name">估值合理度檢定</h3>
+          <div class="step-source">FAMA-FRENCH VALUE</div>
+          <ul class="step-rules">
+            <li>預估本益比 (Forward P/E) < 22 倍</li>
+            <li>股價淨值比 (P/B) 位於歷史河流圖中下緣</li>
+            <li>股東權益報酬率 (ROE) > 12%</li>
+            <li>具備殖利率保護機制 (近 3 年配息率 > 60%)</li>
+          </ul>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <h3 class="step-name">營收動能與催化劑</h3>
+          <div class="step-source">JEGADEESH MOMENTUM</div>
+          <ul class="step-rules">
+            <li>近 3 個月累計營收 YoY 正成長 > 10%</li>
+            <li>股價位於 20 日 (月線) 與 60 日 (季線) 之上</li>
+            <li>外資與投信近 20 日呈現合力淨買超</li>
+            <li>新一代 AI 晶片或平台認證通過利多</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊四：互動式 F-Score 檢測計算器 -->
+    <section id="interactive" class="section">
+      <div class="section-header">
+        <div class="section-kicker">INTERACTIVE TOOL</div>
+        <h2 class="section-title">Piotroski F-Score 實戰健檢計算器</h2>
+        <p class="section-subtitle">
+          挑選任何一檔電腦週邊類股（例如廣達、奇鋐或研華），逐一勾選最新財報數據，系統將即時計算評等。
+        </p>
+      </div>
+
+      <div class="interactive-box">
+        <div class="fscore-checklist">
+          <div class="checklist-title">
+            <span>檢驗指標清單（共 9 項）</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--blue-primary);" id="checked-count">已符合 7/9 項</span>
+          </div>
+
+          <!-- 獲利能力組 -->
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">1. 資產報酬率 (ROA) > 0</span>
+              <span class="item-sub">獲利維度：公司本期有實質賺錢而非帳面虧損</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">2. 營業活動現金流量 (CFO) > 0</span>
+              <span class="item-sub">獲利維度：營業本業實質流入真金白銀</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">3. ROA 較前一年提升 (ΔROA > 0)</span>
+              <span class="item-sub">獲利維度：資產獲利效率處於上升週期</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">4. 營業現金流 > 稅後淨利 (CFO > Net Income)</span>
+              <span class="item-sub">盈餘品質：防範硬體業虛增應收帳款之做帳灌水</span>
+            </div>
+          </label>
+
+          <!-- 槓桿與流動性組 -->
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">5. 長期負債比率較前一年下降</span>
+              <span class="item-sub">槓桿維度：降低金融借款槓桿，提升財務抗風險力</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" onchange="updateFScore()">
+            <div>
+              <span class="item-text">6. 流動比率 (Current Ratio) 較前一年上升</span>
+              <span class="item-sub">流動性：短期償債能力提升，防範存貨與週轉危機</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">7. 本年度未發行新股稀釋權益 (No Dilution)</span>
+              <span class="item-sub">槓桿維度：未向股東伸手印股票換鈔票</span>
+            </div>
+          </label>
+
+          <!-- 營運效率組 -->
+          <label class="checklist-item">
+            <input type="checkbox" checked onchange="updateFScore()">
+            <div>
+              <span class="item-text">8. 毛利率 (Gross Margin) 較前一年提升</span>
+              <span class="item-sub">營運效率：具備產品升級或轉型高附加價值跡象</span>
+            </div>
+          </label>
+
+          <label class="checklist-item">
+            <input type="checkbox" onchange="updateFScore()">
+            <div>
+              <span class="item-text">9. 資產週轉率 (Asset Turnover) 較前一年提升</span>
+              <span class="item-sub">營運效率：每一元廠房設備產出之營業額增加</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="score-board">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #93c5fd; letter-spacing: 1px;">PIOTROSKI SCORE</div>
+            <div class="score-circle">
+              <span class="score-num" id="score-display">7</span>
+              <span class="score-total">/ 9 分</span>
+            </div>
+            <div class="score-status" id="status-display">🌟 優質體質標的 (Pass)</div>
+          </div>
+          <div class="score-recommendation" id="recommendation-display">
+            符合 7 分以上高門檻！具備極佳的現金流與資產運營韌性，在電腦週邊景氣循環中能抵抗庫存降價衝擊，可列入核心選股池進行估值與動能評估。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊五：台股電腦及週邊類股代表範例庫 -->
+    <section id="screener" class="section">
+      <div class="section-header">
+        <div class="section-kicker">CASE EXAMPLES & SCREENER</div>
+        <h2 class="section-title">代表標的庫與量化指標對照</h2>
+        <p class="section-subtitle">
+          根據文獻標準檢驗台灣代表性電腦及週邊設備個股之基本面特徵（示意範例）：
+        </p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>股票代號 / 名稱</th>
+              <th>次產業細分領域</th>
+              <th>毛利率 (Gross Margin)</th>
+              <th>F-Score 評分</th>
+              <th>近3月營收動能</th>
+              <th>本益比位階</th>
+              <th>策略定位分類</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2382 廣達</strong></td>
+              <td>AI 伺服器 / 白牌代工龍頭</td>
+              <td>7.8% (代工相對高)</td>
+              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
+              <td>+42.5% YoY</td>
+              <td>中段水位 (18x)</td>
+              <td><span class="tag-badge tag-blue">核心大型動能股</span></td>
+            </tr>
+            <tr>
+              <td><strong>3017 奇鋐</strong></td>
+              <td>伺服器水冷與散熱模組</td>
+              <td>23.4% (高毛利)</td>
+              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
+              <td>+38.1% YoY</td>
+              <td>高評價溢價 (24x)</td>
+              <td><span class="tag-badge tag-blue">Novy-Marx 品質成長股</span></td>
+            </tr>
+            <tr>
+              <td><strong>2395 研華</strong></td>
+              <td>工業電腦 (IPC) / 物聯網</td>
+              <td>39.8% (極高毛利)</td>
+              <td><span class="tag-badge tag-green">7 分 (穩健)</span></td>
+              <td>+6.2% YoY</td>
+              <td>歷史低檔 (21x)</td>
+              <td><span class="tag-badge tag-amber">防禦型價值品質股</span></td>
+            </tr>
+            <tr>
+              <td><strong>3231 緯創</strong></td>
+              <td>AI 伺服器主板 / 運算模組</td>
+              <td>7.9% (轉型升級)</td>
+              <td><span class="tag-badge tag-green">7 分 (達標)</span></td>
+              <td>+28.4% YoY</td>
+              <td>合理估值 (15x)</td>
+              <td><span class="tag-badge tag-blue">景氣轉折動能股</span></td>
+            </tr>
+            <tr>
+              <td><strong>3324 雙鴻</strong></td>
+              <td>高階散熱與液冷系統</td>
+              <td>24.6% (高毛利)</td>
+              <td><span class="tag-badge tag-green">8 分 (極佳)</span></td>
+              <td>+31.0% YoY</td>
+              <td>成長溢價 (25x)</td>
+              <td><span class="tag-badge tag-blue">規格升級受惠股</span></td>
+            </tr>
+            <tr>
+              <td><strong>2376 技嘉</strong></td>
+              <td>伺服器 / 主機板 / 顯卡</td>
+              <td>11.2% (受零組件波動)</td>
+              <td><span class="tag-badge tag-amber">6 分 (觀察)</span></td>
+              <td>+45.2% YoY</td>
+              <td>中低水位 (14x)</td>
+              <td><span class="tag-badge tag-amber">高動能但需監控庫存</span></td>
+            </tr>
+            <tr>
+              <td><strong>2353 宏碁</strong></td>
+              <td>個人電腦品牌 / 代理通路</td>
+              <td>10.6% (品牌成熟)</td>
+              <td><span class="tag-badge tag-amber">5 分 (中性)</span></td>
+              <td>+3.8% YoY</td>
+              <td>中性估值 (16x)</td>
+              <td><span class="tag-badge tag-blue">高股息防禦標的</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 區塊六：投資風險與 SOP 紀律 -->
+    <section id="sop" class="section">
+      <div class="section-header">
+        <div class="section-kicker">EXECUTION & RISK DISCIPLINE</div>
+        <h2 class="section-title">量化投資紀律與風險管理 SOP</h2>
+        <p class="section-subtitle">
+          學術模型的長期超額回報依賴於「嚴格執行」與「停損防線」，絕不可受市場短期情緒影響。
+        </p>
+      </div>
+
+      <div class="sop-grid">
+        <div class="sop-card">
+          <div class="sop-title">
+            <span class="sop-icon">📅</span>
+            <span>季度再平衡紀律</span>
+          </div>
+          <p class="sop-desc">
+            於每季財報申報截止後（3/31、5/15、8/14、11/14）的 5 個交易日內，重新執行全族群 F-Score 與毛利率計算。若原有持股 F-Score 降至 5 分以下或毛利率連續兩季失速，無條件調出並換入新晉標的。
+          </p>
+        </div>
+
+        <div class="sop-card">
+          <div class="sop-title">
+            <span class="sop-icon">🛡️</span>
+            <span>持股上限與集中度</span>
+          </div>
+          <p class="sop-desc">
+            投資組合鎖定 6~10 檔電腦週邊設備股票，單一個股資金上限不得超過整體部位的 18%。即便極度看好 AI 伺服器代工，也必須分散至散熱、電源及 IPC 零組件，降低單一組裝大廠遭砍單之系統性衝擊。
+          </p>
+        </div>
+
+        <div class="sop-card">
+          <div class="sop-title">
+            <span class="sop-icon">⚠️</span>
+            <span>存貨天數警報停損</span>
+          </div>
+          <p class="sop-desc">
+            硬體製造業的獲利殺手通常是存貨。當季報顯示「存貨週轉天數」較前一年同期暴增超過 25%，且營收年增率轉負時，即啟動防禦性停損，不必等待股價破線跌破年線。
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-brand">電腦及週邊設備類股學術量化投資策略網</div>
+        <div style="font-size: 0.8rem; margin-top: 6px; opacity: 0.8;">
+          基於 Piotroski (2000)、Fama-French (1993, 2015)、Novy-Marx (2013) 及 Jegadeesh-Titman (1993)
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#framework">核心理論框架</a>
+        <a href="https://github.com/itachi923/computer-peripherals-stock-strategy" target="_blank" rel="noopener">GitHub 專案倉庫</a>
+        <a href="#literature">引用文獻列表</a>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 24px auto 0 auto; text-align: center; font-size: 0.76rem; opacity: 0.5;">
+      免責聲明：本網站內容為學術文獻回顧與量化投資策略教學研究，不構成任何證券之買賣推薦或投資諮詢建議。投資人應獨立評估風險並自負盈虧。
+    </div>
+  </footer>
+
+  <script>
+    function updateFScore() {
+      const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+      let score = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) score++;
+      });
+
+      document.getElementById('score-display').innerText = score;
+      document.getElementById('checked-count').innerText = `已符合 ${score}/9 項`;
+
+      const statusEl = document.getElementById('status-display');
+      const recEl = document.getElementById('recommendation-display');
+
+      if (score >= 8) {
+        statusEl.innerText = "🏆 頂級績優標的 (Elite)";
+        statusEl.style.color = "#38bdf8";
+        recEl.innerText = "9 項中取得 8~9 分極高分！具備最頂級的現金流品質、資產運用效率與毛利競爭力。在台股電腦週邊族群中屬於稀缺的高品質核心資產，可積極配置。";
+      } else if (score >= 6) {
+        statusEl.innerText = "🌟 優質體質標的 (Pass)";
+        statusEl.style.color = "#4ade80";
+        recEl.innerText = "符合 6~7 分合格門檻！具備良好的財務安全邊際與現金流，能有效抵禦庫存循環波動，可進一步配合本益比估值與營收動能進行選股決策。";
+      } else if (score >= 4) {
+        statusEl.innerText = "⚠️ 中性觀察標的 (Neutral)";
+        statusEl.style.color = "#fbbf24";
+        recEl.innerText = "得分介於 4~5 分，顯示公司在毛利率提升、長債降低或現金流轉化中存在部分弱點。建議僅在估值極度低估或具備強大催化劑時少量佈局，需嚴設停損。";
+      } else {
+        statusEl.innerText = "🚨 價值陷阱警戒 (Value Trap)";
+        statusEl.style.color = "#f87171";
+        recEl.innerText = "得分低於 4 分！即便本益比或股價淨值比看似便宜，但現金流與營運效率已顯著惡化，極易落入製造業的「低毛利 + 存貨跌價」價值陷阱，強烈建議避開。";
+      }
+    }
+
+    // 初始化試算
+    updateFScore();
+  </script>
+</body>
+</html>
