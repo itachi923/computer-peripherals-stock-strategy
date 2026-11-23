@@ -775,6 +775,31 @@
       color: #64748b;
     }
 
+    /* 右下角懸浮跳轉按鈕 (Floating Action Pill) */
+    .floating-switch {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .floating-switch:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(2, 132, 199, 0.45);
+      color: #fff;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
@@ -803,11 +828,17 @@
         <li><a href="#stocks">20+精選個股</a></li>
         <li><a href="#health">3分鐘健檢</a></li>
         <li><a href="#calc">定投/風控試算</a></li>
-        <li><a href="#science">文獻佐證</a></li>
+        <li><a href="industry-chain.html" style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff !important; padding: 7px 14px; border-radius: 8px; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(2,132,199,0.25);">📊 上中下游產業鏈圖</a></li>
         <li><a href="#quiz" class="nav-btn">測測適合我的股票</a></li>
       </ul>
     </div>
   </header>
+
+  <!-- 懸浮快速切換膠囊 -->
+  <a href="industry-chain.html" class="floating-switch" title="點擊切換查看上中下游產業鏈圖與個股剖析">
+    <span>📊 隨時切換：上中下游產業鏈</span>
+    <span>➔</span>
+  </a>
 
   <div class="container">
 
@@ -821,6 +852,7 @@
       </p>
       <div class="hero-actions">
         <a href="#quiz" class="btn-main">🎯 1分鐘測驗：找出適合我的硬體股</a>
+        <a href="industry-chain.html" class="btn-main" style="background: linear-gradient(135deg, #0284c7, #0f766e);">📊 上中下游產業鏈圖與推薦首選</a>
         <a href="#stocks" class="btn-secondary">📋 瀏覽 20+ 精選硬體公司地圖</a>
       </div>
 
@@ -1510,6 +1542,7 @@
         <div style="font-size: 0.82rem; margin-top: 4px;">結合台灣硬體供應鏈特色 · 3大白話投資方法 · 頂尖國際文獻科學佐證</div>
       </div>
       <div class="footer-links">
+        <a href="industry-chain.html" style="color:#38bdf8; font-weight:700;">📊 上中下游產業鏈圖</a>
         <a href="#methods">三大實戰法</a>
         <a href="#quiz">推薦測驗</a>
         <a href="#stocks">精選 20+ 個股</a>

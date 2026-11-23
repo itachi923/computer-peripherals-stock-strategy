@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>電腦及週邊設備類股 · 上中下游產業鏈圖與王牌首選股深度解析</title>
+  <meta name="description" content="全方位拆解台股電腦及週邊設備業上、中、下游產業鏈圖！分析毛利率、獲利能力、專利壁壘與AI伺服器趨勢，並挑選出最具投資價值的指標個股。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* 淺藍與科技海洋主題 */
+      --bg-main: #f0f6fc;
+      --bg-gradient: linear-gradient(135deg, #eaf3fb 0%, #d8ecf8 50%, #eef6fd 100%);
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: #cfe5f8;
+      --card-hover-border: #0284c7;
+      
+      --text-title: #0a2540;
+      --text-body: #2d4156;
+      --text-muted: #5e768d;
+      
+      --blue-primary: #1e60d5;
+      --blue-navy: #0f2c4d;
+      --blue-soft: #e1effe;
+      --blue-cyan: #0284c7;
+      
+      --accent-green: #0d9488;
+      --accent-green-bg: #e6fffa;
+      --accent-amber: #d97706;
+      --accent-amber-bg: #fef3c7;
+      --accent-purple: #7c3aed;
+      --accent-purple-bg: #ede9fe;
+      --accent-red: #e11d48;
+      
+      --font-main: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "IBM Plex Mono", Consolas, monospace;
+      
+      --shadow-sm: 0 2px 8px rgba(15, 44, 77, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 44, 77, 0.08);
+      --shadow-lg: 0 16px 36px rgba(15, 44, 77, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-gradient);
+      color: var(--text-body);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* 淺藍微光背景波紋 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -15vh;
+      left: -10vw;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(240, 246, 252, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -15vh;
+      right: -10vw;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(191, 219, 254, 0.4) 0%, rgba(240, 246, 252, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 頂部導航 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(240, 246, 252, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(195, 222, 245, 0.8);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--blue-navy);
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.15rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--blue-cyan);
+    }
+    .nav-switch-btn {
+      background: linear-gradient(135deg, #1e60d5, #2563eb);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(30, 96, 213, 0.25);
+      transition: all 0.2s !important;
+    }
+    .nav-switch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30, 96, 213, 0.35);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 35px 24px 60px;
+    }
+
+    /* 頂部切換提示橫幅 */
+    .switch-banner {
+      background: linear-gradient(135deg, #e0effe 0%, #dbeafe 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .switch-banner-text {
+      font-size: 0.92rem;
+      color: var(--blue-navy);
+      font-weight: 500;
+    }
+    .switch-banner-btn {
+      background: #fff;
+      color: var(--blue-primary);
+      border: 1.5px solid var(--blue-primary);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .switch-banner-btn:hover {
+      background: var(--blue-primary);
+      color: #fff;
+    }
+
+    /* Hero 區域 */
+    .hero {
+      text-align: center;
+      padding: 45px 20px 50px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(240, 247, 255, 0.7) 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 50px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-soft);
+      color: var(--blue-cyan);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 2.3rem;
+      color: var(--text-title);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #0284c7, #1d4ed8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 25px;
+      line-height: 1.8;
+    }
+
+    /* 章節共用樣式 */
+    .section-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .section-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--blue-cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.85rem;
+      color: var(--text-title);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* 產業鏈架構視覺流程圖 */
+    .chain-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    .chain-level {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--card-border);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .chain-level:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-cyan);
+    }
+    .chain-level.upstream { border-left: 8px solid #0284c7; }
+    .chain-level.midstream { border-left: 8px solid #1e60d5; }
+    .chain-level.downstream { border-left: 8px solid #0d9488; }
+
+    .level-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .level-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .level-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+    }
+    .upstream .level-badge { background: #e0f2fe; color: #0284c7; }
+    .midstream .level-badge { background: #e0effe; color: #1e60d5; }
+    .downstream .level-badge { background: #ccfbf1; color: #0f766e; }
+
+    .level-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--blue-navy);
+    }
+    .level-margin-tag {
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .level-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      background: #f8fbfe;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      font-size: 0.92rem;
+    }
+    .level-features div span {
+      font-weight: 700;
+      color: var(--blue-navy);
+    }
+
+    /* 產業鏈公司卡片群 */
+    .company-chips-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .company-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      background: #fff;
+      border: 1.5px solid #dbeafe;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue-navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .chip:hover {
+      border-color: var(--blue-cyan);
+      background: #f0f9ff;
+      transform: translateY(-2px);
+    }
+    .chip-code {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--blue-cyan);
+      background: #e0f2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .chip-star {
+      color: #f59e0b;
+      font-size: 0.9rem;
+    }
+
+    /* 流程連接箭頭 */
+    .chain-arrow {
+      text-align: center;
+      margin: -10px 0;
+      font-size: 1.6rem;
+      color: #93c5fd;
+      font-weight: 800;
+    }
+
+    /* 深度剖析精選區（Pick Breakdown） */
+    .spotlight-section {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 2px solid #bae6fd;
+      padding: 35px;
+      margin-bottom: 60px;
+      box-shadow: var(--shadow-md);
+    }
+    .spotlight-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 25px;
+    }
+
+    .pick-card {
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 1.5px solid var(--card-border);
+      background: #fafcfe;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pick-card.featured {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+      border: 2px solid #0284c7;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+    }
+    .pick-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .pick-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--blue-navy);
+    }
+    .pick-role {
+      font-size: 0.84rem;
+      color: #0369a1;
+      font-weight: 700;
+      background: #e0f2fe;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 18px;
+      font-size: 0.9rem;
+    }
+    .metrics-table th, .metrics-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    .metrics-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .metrics-table td {
+      font-weight: 700;
+      color: var(--blue-navy);
+      font-family: var(--font-mono);
+    }
+
+    .reason-box {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0f2fe;
+      padding: 14px;
+      margin-bottom: 14px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .reason-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue-navy);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 比較與雷達評分區 */
+    .compare-section {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 35px;
+      margin-bottom: 60px;
+    }
+    .chain-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.94rem;
+    }
+    .chain-table th, .chain-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    .chain-table th {
+      background: #f8fafc;
+      color: var(--blue-navy);
+      font-weight: 700;
+    }
+    .chain-table tr:hover {
+      background: #f0f7ff;
+    }
+
+    /* 頁尾 */
+    footer {
+      background: #0f2c4d;
+      color: #94a3b8;
+      padding: 45px 24px 30px;
+      margin-top: 60px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .disclaimer {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #1e3a5f;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+
+    /* 右下角懸浮跳轉按鈕 (Floating Action Pill) */
+    .floating-switch {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: linear-gradient(135deg, #1e60d5, #0284c7);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .floating-switch:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(2, 132, 199, 0.45);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8rem; }
+      .nav-links { display: none; }
+      .level-features { grid-template-columns: 1fr; }
+      .chain-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導航 -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">⛓️</div>
+        <span>電腦週邊類股 · 上中下游產業鏈</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#chain">產業鏈架構圖</a></li>
+        <li><a href="#spotlight">🏆 王牌精選股</a></li>
+        <li><a href="#comparison">跨鏈層獲利對比</a></li>
+        <li><a href="#faq">實戰QA</a></li>
+        <li><a href="index.html" class="nav-switch-btn">🏠 返回：三大投資法與選股庫</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 懸浮快速切換膠囊 -->
+  <a href="index.html" class="floating-switch" title="點擊切換回三大實戰投資法與選股庫">
+    <span>🏠 隨時切換：回首頁投資法</span>
+    <span>⇄</span>
+  </a>
+
+  <div class="container">
+
+    <!-- 雙向切換提示橫幅 -->
+    <div class="switch-banner">
+      <div class="switch-banner-text">
+        💡 <strong>雙網聯動中：</strong>本頁為「上中下游產業鏈圖與個股剖析」。若要查閱「三大實戰投資方法、20+ 股搜尋器與風控試算」，可隨時一鍵切換！
+      </div>
+      <a href="index.html" class="switch-banner-btn">切換至首頁實戰指南 ➔</a>
+    </div>
+
+    <!-- Hero 區域 -->
+    <section class="hero">
+      <div class="hero-tag">📊 INDUSTRY CHAIN & TOP PICKS</div>
+      <h1>看透<span>電腦及週邊設備</span>上中下游產業鏈圖</h1>
+      <p>
+        硬體族群不只是代工！從<strong>上游超高毛利的專利導軌與水冷散熱</strong>、<strong>中游兆元規模的 AI 伺服器系統代工</strong>，到<strong>下游全球 CSP 雲端客戶與終端品牌</strong>。<br>
+        為您抽絲剝繭產值流向與定價權分配，並綜合「毛利率、獲利純度、產業爆發趨勢」，挑選出最適合長期投資的王牌首選！
+      </p>
+    </section>
+
+    <!-- 第一章：上中下游產業鏈全景圖 -->
+    <section id="chain" style="margin-bottom: 60px;">
+      <div class="section-header">
+        <div class="section-tag">SUPPLY CHAIN ARCHITECTURE</div>
+        <h2 class="section-title">台股電腦及週邊設備業 · 上中下游價值鏈圖</h2>
+        <p class="section-desc">直觀呈現關鍵技術、利潤率分配與代表廠商，點擊個股可檢視其產業地位：</p>
+      </div>
+
+      <div class="chain-container">
+
+        <!-- 上游層 -->
+        <div class="chain-level upstream">
+          <div class="level-header">
+            <div class="level-title-group">
+              <span class="level-badge">UPSTREAM</span>
+              <h3 class="level-name">上游：關鍵零組件、精密散熱與機構滑軌</h3>
+            </div>
+            <div class="level-margin-tag" style="color: #0284c7;">平均毛利率：25% ~ 70%（全鏈最高）</div>
+          </div>
+
+          <div class="level-features">
+            <div><span>核心價值：</span>技術門檻極高、擁有專利保護壁壘、客製化深度深。</div>
+            <div><span>獲利催化劑：</span>AI 晶片高功耗（TDP 突破 1000W）引爆水冷板、散熱風扇與重型導軌規格升級。</div>
+            <div><span>投資屬性：</span>具備高度定價權（Pricing Power），毛利不易被壓縮，成長爆發力強。</div>
+          </div>
+
+          <div class="company-chips-title">⭐ 代表指標公司：</div>
+          <div class="company-chips">
+            <div class="chip" onclick="highlightStock('2059')">
+              <span class="chip-star">★</span>
+              <span>川湖 (伺服器導軌龍頭)</span>
+              <span class="chip-code">2059</span>
+            </div>
+            <div class="chip" onclick="highlightStock('3017')">
+              <span class="chip-star">★</span>
+              <span>奇鋐 (水冷與散熱模組)</span>
+              <span class="chip-code">3017</span>
+            </div>
+            <div class="chip" onclick="highlightStock('3324')">
+              <span>雙鴻 (液冷散熱模組)</span>
+              <span class="chip-code">3324</span>
+            </div>
+            <div class="chip" onclick="highlightStock('3653')">
+              <span>健策 (均熱片 Heat Sink)</span>
+              <span class="chip-code">3653</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2421')">
+              <span>建準 (高階精密風扇)</span>
+              <span class="chip-code">2421</span>
+            </div>
+            <div class="chip" onclick="highlightStock('8210')">
+              <span>勤誠 (伺服器機殼霸主)</span>
+              <span class="chip-code">8210</span>
+            </div>
+            <div class="chip" onclick="highlightStock('3013')">
+              <span>晟銘電 (水冷機櫃機構件)</span>
+              <span class="chip-code">3013</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2301')">
+              <span>光寶科 (高瓦數雲端電源)</span>
+              <span class="chip-code">2301</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 流程箭頭 1 -->
+        <div class="chain-arrow">▼ 提供關鍵散熱、機構件、滑軌與電源系統</div>
+
+        <!-- 中游層 -->
+        <div class="chain-level midstream">
+          <div class="level-header">
+            <div class="level-title-group">
+              <span class="level-badge">MIDSTREAM</span>
+              <h3 class="level-name">中游：系統整合代工、主機板卡與工業電腦 (ODM/EMS/IPC)</h3>
+            </div>
+            <div class="level-margin-tag" style="color: #1e60d5;">平均毛利率：6% ~ 15%（營收兆元級規模）</div>
+          </div>
+
+          <div class="level-features">
+            <div><span>核心價值：</span>全球最強組裝與龐大供應鏈運籌管理，台灣掌控全球 80%+ 伺服器產能。</div>
+            <div><span>獲利催化劑：</span>輝達 Blackwell 系列、GB200 整機機櫃組裝出貨，帶動單月營收爆發。</div>
+            <div><span>投資屬性：</span>薄利多銷但 ROE 高達 20%~28%，外資法人配置龐大資金的核心錨定標的。</div>
+          </div>
+
+          <div class="company-chips-title">⭐ 代表指標公司：</div>
+          <div class="company-chips">
+            <div class="chip" onclick="highlightStock('2382')">
+              <span class="chip-star">★</span>
+              <span>廣達 (AI 伺服器代工龍頭)</span>
+              <span class="chip-code">2382</span>
+            </div>
+            <div class="chip" onclick="highlightStock('3231')">
+              <span>緯創 (運算基板與伺服器)</span>
+              <span class="chip-code">3231</span>
+            </div>
+            <div class="chip" onclick="highlightStock('6669')">
+              <span>緯穎 (白牌雲端直銷 CSP)</span>
+              <span class="chip-code">6669</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2356')">
+              <span>英業達 (伺服器與主機板)</span>
+              <span class="chip-code">2356</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2376')">
+              <span>技嘉 (伺服器與顯卡主板)</span>
+              <span class="chip-code">2376</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2395')">
+              <span class="chip-star">★</span>
+              <span>研華 (工業電腦龍頭)</span>
+              <span class="chip-code">2395</span>
+            </div>
+            <div class="chip" onclick="highlightStock('6414')">
+              <span>樺漢 (智慧邊緣工業電腦)</span>
+              <span class="chip-code">6414</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 流程箭頭 2 -->
+        <div class="chain-arrow">▼ 交付整機機櫃至雲端機房，或透過品牌通路銷售終端市場</div>
+
+        <!-- 下游層 -->
+        <div class="chain-level downstream">
+          <div class="level-header">
+            <div class="level-title-group">
+              <span class="level-badge">DOWNSTREAM</span>
+              <h3 class="level-name">下游：超大規模 CSP 客戶、全球 PC/NB 品牌與產業終端應用</h3>
+            </div>
+            <div class="level-margin-tag" style="color: #0f766e;">平均毛利率：10% ~ 22%（視品牌溢價而定）</div>
+          </div>
+
+          <div class="level-features">
+            <div><span>核心價值：</span>終端品牌知名度、通路鋪貨能力、以及微軟/Meta/Google/AWS 的採購預算。</div>
+            <div><span>獲利催化劑：</span>AI PC 換機潮、微軟 Windows 升級換代、高階電競遊戲大作帶動硬體換機。</div>
+            <div><span>投資屬性：</span>受全球總體經濟與消費性電子景氣循環影響大，適合逢低價值反轉操作。</div>
+          </div>
+
+          <div class="company-chips-title">⭐ 代表指標公司：</div>
+          <div class="company-chips">
+            <div class="chip" onclick="highlightStock('2357')">
+              <span>華碩 (PC/NB 品牌與 AI PC)</span>
+              <span class="chip-code">2357</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2377')">
+              <span>微星 (電競筆電與顯卡品牌)</span>
+              <span class="chip-code">2377</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2353')">
+              <span>宏碁 (PC 品牌與小金雞艦隊)</span>
+              <span class="chip-code">2353</span>
+            </div>
+            <div class="chip" onclick="highlightStock('2324')">
+              <span>仁寶 (全球筆電代工霸主)</span>
+              <span class="chip-code">2324</span>
+            </div>
+            <div class="chip">
+              <span style="color:#64748b;">國際終端買家：微軟、Google、Meta、AWS (北美四大 CSP)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 第二章：最適合投資的個股推薦與多維度剖析 -->
+    <section id="spotlight" class="spotlight-section">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <span class="spotlight-badge">👑 TOP INVESTMENT PICKS</span>
+        <h2 class="section-title">上中下游精選：哪一檔最適合投資？為什麼？</h2>
+        <p class="section-desc">
+          從「毛利率護城河」、「獲利能力指標」、「產業趨勢利多」三大維度，為您精挑各環節最值得投資的標的，並給出全產業鏈的「綜合首選王牌」：
+        </p>
+      </div>
+
+      <div class="spotlight-grid">
+
+        <!-- 上游王牌首選：川湖 (2059) -->
+        <div class="pick-card featured" id="card-2059">
+          <div class="pick-header">
+            <div>
+              <div class="pick-name">川湖 (2059)</div>
+              <div style="font-size:0.85rem; color:var(--text-muted); margin-top:2px;">上游精選 · 伺服器導軌全球霸主</div>
+            </div>
+            <span class="pick-role" style="background:#e0f2fe; color:#0284c7;">🏆 上游獲利王</span>
+          </div>
+
+          <table class="metrics-table">
+            <tr>
+              <th>毛利率 (Gross Margin)</th>
+              <td style="color:#059669; font-size:1.05rem;">65% ~ 70%+ (堪比台積電)</td>
+            </tr>
+            <tr>
+              <th>營業利益率 (Operating Margin)</th>
+              <td>50% ~ 55%</td>
+            </tr>
+            <tr>
+              <th>ROE 股東權益報酬率</th>
+              <td>22% ~ 26%</td>
+            </tr>
+            <tr>
+              <th>全球市占率</th>
+              <td>高階伺服器導軌市占超過 60%</td>
+            </tr>
+          </table>
+
+          <div class="reason-box">
+            <h4>💡 為什麼最適合投資？深度解析：</h4>
+            <p><strong>1. 毛利率指標（獨占定價權）：</strong>一般人以為導軌只是鐵件，但川湖手握全球逾 3,000 項專利壁壘，讓它在 AI 伺服器導軌擁有近乎獨占的定價權，毛利率高達驚人的 68% 以上！</p>
+            <p><strong>2. 產業趨勢不可替代性：</strong>最新一代輝達 GB200 NVL72 伺服器整櫃重達 1.3 噸以上，對抗震、承重、防卡死、熱膨脹的要求極高，目前全球通過嚴格認證的供應商寥寥無幾，不論微軟或 Google 找廣達或緯創代工，導軌都幾乎指定川湖！</p>
+            <p><strong>3. 不受單一客戶風險影響：</strong>無論輝達、AMD、英特爾或 CSP 自研 ASIC 晶片誰贏，每台伺服器都需要滑軌，是「賣鏟子策略」最完美的典範。</p>
+          </div>
+
+          <div style="margin-top:auto; font-size:0.88rem; background:#eff6ff; padding:10px; border-radius:6px; color:#1e40af;">
+            <strong>🎯 投資策略建議：</strong>適合「波段成長順勢」或「中長期核心持股」。本益比回檔至 20~22 倍時是絕佳中長線買點。
+          </div>
+        </div>
+
+        <!-- 中游王牌首選：廣達 (2382) -->
+        <div class="pick-card featured" id="card-2382">
+          <div class="pick-header">
+            <div>
+              <div class="pick-name">廣達 (2382)</div>
+              <div style="font-size:0.85rem; color:var(--text-muted); margin-top:2px;">中游精選 · AI 伺服器代工兆元龍頭</div>
+            </div>
+            <span class="pick-role" style="background:#e0effe; color:#1e60d5;">🏆 中游規模王</span>
+          </div>
+
+          <table class="metrics-table">
+            <tr>
+              <th>毛利率 (Gross Margin)</th>
+              <td>8.0% ~ 9.0% (代工同業最高)</td>
+            </tr>
+            <tr>
+              <th>ROE 股東權益報酬率</th>
+              <td style="color:#059669; font-size:1.05rem;">25% ~ 28%+ (資產週轉極快)</td>
+            </tr>
+            <tr>
+              <th>年營收規模</th>
+              <td>突破 1 兆 2,000 億元新台幣</td>
+            </tr>
+            <tr>
+              <th>輝達合作深度</th>
+              <td>一線首發夥伴 (Tier-1 Partner)</td>
+            </tr>
+          </table>
+
+          <div class="reason-box">
+            <h4>💡 為什麼最適合投資？深度解析：</h4>
+            <p><strong>1. 獲利品質躍升（三率三升）：</strong>過去筆電代工毛利僅 3%~4%（毛三到四），但近年廣達全力押注 AI 伺服器與車載系統，毛利率成功站穩 8%~9%，營業利益與每股 EPS 連續數年創歷史新高！</p>
+            <p><strong>2. 巨量資本與出貨護城河：</strong>AI 伺服器整機單價極高（一台機櫃數千萬甚至上億元），代工廠需要極其龐大的營運週轉金與採購實力，中小廠商根本無法承接，訂單自然高度集中於廣達。</p>
+            <p><strong>3. 北美 CSP 四大巨頭全覆蓋：</strong>微軟、Google、AWS、Meta 皆為廣達核心大客戶，訂單能見度遠達 2026 年，抗景氣單一逆風能力極強。</p>
+          </div>
+
+          <div style="margin-top:auto; font-size:0.88rem; background:#eff6ff; padding:10px; border-radius:6px; color:#1e40af;">
+            <strong>🎯 投資策略建議：</strong>適合「大資金法人型配置」與「定期定額存股成長」。回測季線（60MA）或月線時分批布局。
+          </div>
+        </div>
+
+        <!-- 上游散熱黑馬：奇鋐 (3017) -->
+        <div class="pick-card" id="card-3017">
+          <div class="pick-header">
+            <div>
+              <div class="pick-name">奇鋐 (3017)</div>
+              <div style="font-size:0.85rem; color:var(--text-muted); margin-top:2px;">上游精選 · 液冷水冷散熱總冠軍</div>
+            </div>
+            <span class="pick-role" style="background:#fef3c7; color:#b45309;">⚡ 水冷爆發王</span>
+          </div>
+
+          <table class="metrics-table">
+            <tr>
+              <th>毛利率 (Gross Margin)</th>
+              <td style="color:#059669;">23% ~ 25%+ (逐季跳升)</td>
+            </tr>
+            <tr>
+              <th>營業利益率</th>
+              <td>12% ~ 14%</td>
+            </tr>
+            <tr>
+              <th>產品單價 (ASP) 增長</th>
+              <td>水冷系統為氣冷散熱的 5~10 倍</td>
+            </tr>
+            <tr>
+              <th>關鍵自製率</th>
+              <td>水冷板、分流管、CDU 完整一條龍</td>
+            </tr>
+          </table>
+
+          <div class="reason-box">
+            <h4>💡 為什麼最適合投資？深度解析：</h4>
+            <p><strong>1. 散熱架構典範轉移：</strong>隨著晶片功耗衝上 700W~1200W，氣冷散熱已達物理極限，水冷成為「必選題」。水冷系統產值是傳統風扇的數倍，直接帶動奇鋐營收與毛利率雙爆發！</p>
+            <p><strong>2. CDU 與水冷板全套認證：</strong>不同於只做單一零組件的廠商，奇鋐能自製散熱風扇、3D VC、水冷板到冷卻液分配裝置（CDU），是極少數能提供整機散熱解決方案的領頭羊。</p>
+          </div>
+
+          <div style="margin-top:auto; font-size:0.88rem; background:#eff6ff; padding:10px; border-radius:6px; color:#1e40af;">
+            <strong>🎯 投資策略建議：</strong>爆發力強、Beta 值較高，適合積極型波段投資人，嚴格以 20 日線移動停利。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 總結皇冠評價 -->
+      <div style="margin-top: 30px; background: linear-gradient(135deg, #e0f2fe 0%, #e0effe 100%); border-radius: 12px; border: 1.5px solid #93c5fd; padding: 22px;">
+        <h3 style="color: var(--blue-navy); font-size: 1.25rem; margin-bottom: 8px;">
+          👑 綜合結論：全產業鏈挑一檔最適合投資的是誰？
+        </h3>
+        <p style="color: var(--text-body); font-size: 0.98rem; line-height: 1.8;">
+          如果你追求<strong>「最頂級的毛利率護城河、專利獨占性與不受代工削價競爭」</strong>，首選是 <strong>【川湖 (2059)】</strong>！它的毛利率高達 68% 以上，具備任何組裝廠都無法取代的專利價值。<br>
+          如果你追求<strong>「營收規模最大、穩健抗震、外資與投信長線必配」</strong>，首選則是 <strong>【廣達 (2382)】</strong>！它是全球雲端與 AI 算力落地的核心樞紐。<br>
+          <em>👉 最佳策略：可用「廣達 60% 作為核心穩定基石」+「川湖 40% 作為毛利獲利衝刺雙箭頭」！</em>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- 第三章：上中下游財務指標對比表 -->
+    <section id="comparison" class="compare-section">
+      <div class="section-header">
+        <div class="section-tag">METRICS BENCHMARK</div>
+        <h2 class="section-title">上中下游各環節 · 財務與投資特徵對照</h2>
+        <p class="section-desc">清楚理解各層級的優缺點，才能依照自己的風險屬性精準下單：</p>
+      </div>
+
+      <table class="chain-table">
+        <thead>
+          <tr>
+            <th>產業層級</th>
+            <th>平均毛利率</th>
+            <th>營收規模</th>
+            <th>技術門檻與護城河</th>
+            <th>景氣敏感度</th>
+            <th>最推薦適合族群</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>上游 (零組件/散熱/滑軌)</strong><br><small style="color:var(--text-muted);">川湖、奇鋐、雙鴻、健策</small></td>
+            <td style="color:#059669; font-weight:700;">25% ~ 70%</td>
+            <td>百億級 (中高)</td>
+            <td>極高 (專利、客製化、認證期長)</td>
+            <td>中 (技術升級驅動)</td>
+            <td>追求高毛利、超額價差之積極投資人</td>
+          </tr>
+          <tr>
+            <td><strong>中游 (系統組裝/代工)</strong><br><small style="color:var(--text-muted);">廣達、緯創、緯穎、英業達</small></td>
+            <td style="color:#0284c7; font-weight:700;">6% ~ 12%</td>
+            <td>數千億至兆元 (極大)</td>
+            <td>高 (供應鏈資金調度、巨額資本)</td>
+            <td>中高 (CSP 資本支出)</td>
+            <td>追求穩定成長、外資權值股愛好者</td>
+          </tr>
+          <tr>
+            <td><strong>下游 (品牌通路/消費PC)</strong><br><small style="color:var(--text-muted);">華碩、微星、宏碁、仁寶</small></td>
+            <td style="color:#d97706; font-weight:700;">10% ~ 22%</td>
+            <td>千億級 (大)</td>
+            <td>中 (品牌溢價、通路競爭)</td>
+            <td>高 (受全球通膨與換機週期影響)</td>
+            <td>喜歡低本益比、逢低撿便宜波段客</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- 第四章：實戰常見問答 (FAQ) -->
+    <section id="faq" style="margin-bottom: 60px;">
+      <div class="section-header">
+        <div class="section-tag">INVESTOR FAQ</div>
+        <h2 class="section-title">投資人最關心的 3 個產業鏈問題</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="card" style="padding: 20px;">
+          <h4 style="color: var(--blue-navy); margin-bottom: 6px;">Q1. 代工廠毛利率只有 8%，為什麼股價還能漲好幾倍？</h4>
+          <p style="font-size: 0.93rem; color: var(--text-body);">
+            答：因為<strong>「營收規模翻倍 + 週轉率極快」</strong>！雖然廣達毛利率 8%，但一台 AI 伺服器機櫃售價高達 1 億元新台幣，廣達一年出貨幾千櫃，淨利金額極度龐大，這就是財務學上的「高 ROE 槓桿效益」。
+          </p>
+        </div>
+
+        <div class="card" style="padding: 20px;">
+          <h4 style="color: var(--blue-navy); margin-bottom: 6px;">Q2. 水冷散熱（奇鋐、雙鴻）會不會只是短暫題材？</h4>
+          <p style="font-size: 0.93rem; color: var(--text-body);">
+            答：絕非短暫題材，而是<strong>「不可逆的物理升級趨勢」</strong>。未來的 GB200、B300 及下一代 Rubin 晶片運算功率皆在千瓦以上，傳統風扇氣冷無法解熱，不改用水冷伺服器就會燒毀。水冷將是未來 3~5 年硬體規格升級的最強引擎。
+          </p>
+        </div>
+
+        <div class="card" style="padding: 20px;">
+          <h4 style="color: var(--blue-navy); margin-bottom: 6px;">Q3. 我該如何隨時在「投資方法」與「產業鏈圖」之間切換？</h4>
+          <p style="font-size: 0.93rem; color: var(--text-body);">
+            答：本站提供雙向即時切換功能！您可以點選頂部導航列的<strong>「🏠 返回：三大投資法與選股庫」</strong>，或點選右下角的懸浮膠囊按鈕，隨時切換至包含 4 大互動小工具的首頁！
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #fff;">台股電腦及週邊設備類股 · 產業鏈深度專頁</div>
+        <div style="font-size: 0.82rem; margin-top: 4px;">上中下游價值鏈剖析 · 核心個股深度透視 · 與首頁投資法無縫切換</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">🏠 回首頁實戰投資法</a>
+        <a href="#chain">產業鏈架構</a>
+        <a href="#spotlight">王牌精選股</a>
+        <a href="#comparison">指標對比</a>
+        <a href="https://github.com/itachi923/computer-peripherals-stock-strategy" target="_blank" rel="noopener">GitHub 倉庫</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      免責聲明：本網站內容係彙整產業鏈公開資訊與財務指標之研究展示，不構成任何證券買賣之邀約或投資建議。市場有風險，投資人應獨立判斷並自負盈虧。
+    </div>
+  </footer>
+
+  <script>
+    function highlightStock(code) {
+      const targetCard = document.getElementById('card-' + code);
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.style.transition = 'transform 0.3s, box-shadow 0.3s';
+        targetCard.style.transform = 'scale(1.03)';
+        targetCard.style.boxShadow = '0 0 25px rgba(2, 132, 199, 0.4)';
+        setTimeout(() => {
+          targetCard.style.transform = 'none';
+          targetCard.style.boxShadow = '';
+        }, 1500);
+      } else {
+        alert('代號 ' + code + ' 之個股可於首頁 20+ 精選股清單中進行即時搜尋與健康檢查！正在為您跳轉...');
+        window.location.href = 'index.html#stocks';
+      }
+    }
+  </script>
+</body>
+</html>
